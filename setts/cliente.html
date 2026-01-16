@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Acceso Clientes - Connect Chile</title>
+  <meta name="description" content="Ingresá a tu cuenta de Connect Chile de forma segura y rápida.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" href="https://i0.wp.com/connectchile.cl/wp-content/uploads/2019/11/cropped-favicon_Mesa-de-trabajo-1.png?fit=32%2C32" sizes="32x32">
+  <style>
+    /* ESTILOS ORIGINALES DE cliente.html */
+    :root {
+      --rojo: #e63946;
+      --azul: #1d3557;
+      --blanco: #ffffff;
+      --gris: #f1faee;
+      --negro: #0b0b0b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', 'Roboto', sans-serif;
+      letter-spacing: 0.2px;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--azul) 0%, var(--rojo) 100%);
+      color: var(--blanco);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: gradientBG 15s ease infinite;
+    }
+
+    @keyframes gradientBG {
+      0% { background: linear-gradient(135deg, var(--azul) 0%, var(--rojo) 100%); }
+      50% { background: linear-gradient(135deg, var(--rojo) 0%, var(--azul) 100%); }
+      100% { background: linear-gradient(135deg, var(--azul) 0%, var(--rojo) 100%); }
+    }
+
+    .login-container {
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(10px);
+      padding: 3rem 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      animation: fadeIn 0.8s ease-out both;
+    }
+
+    .login-header img {
+      width: 140px;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .login-header img:hover {
+      transform: scale(1.05);
+    }
+
+    .login-header h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .login-header p {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      margin-bottom: 2rem;
+    }
+
+    form {
+      width: 100%;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+
+    label {
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+      display: block;
+      opacity: 0.9;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.85rem;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--blanco);
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+
+    input::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    input:focus {
+      background: rgba(255, 255, 255, 0.2);
+      outline: none;
+      box-shadow: 0 0 8px rgba(230, 57, 70, 0.5);
+    }
+
+    .checkbox-css {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .checkbox-css input {
+      margin-right: 0.5rem;
+    }
+
+    button {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      background: var(--rojo);
+      color: var(--blanco);
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    button:hover {
+      background: var(--azul);
+      transform: translateY(-2px);
+    }
+
+    .extra-links {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+    }
+
+    .extra-links a {
+      color: var(--blanco);
+      text-decoration: none;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+
+    .extra-links a:hover {
+      opacity: 1;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.4);
+      color: var(--blanco);
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.8rem;
+    }
+
+    footer a {
+      color: var(--blanco);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <div class="login-header">
+      <img src="https://i0.wp.com/connectchile.cl/wp-content/uploads/2019/11/cropped-logoconnectchileOK.png" alt="Connect Chile">
+      <h2>Acceso Clientes</h2>
+      <p>Ingresá de forma segura a tu cuenta</p>
+    </div>
+
+    <form id="loginForm">
+      <input type="hidden" name="security_code" id="security_code" value="eec7e0227d42b7135acb51398253c460">
+      <input type="hidden" id="token" value="a1df8ebce2ddb6682f4fde92a6a10544">
+
+      <div class="form-group">
+        <label for="login">Usuario, Email o Cédula</label>
+        <input type="text" id="login" placeholder="Ej: usuario123 o email@dominio.com" required autofocus autocomplete="off">
+      </div>
+
+      <div class="form-group">
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" placeholder="Tu contraseña" required autocomplete="off">
+      </div>
+
+      <div class="checkbox-css">
+        <input type="checkbox" id="remember_login">
+        <label for="remember_login">Recordar datos</label>
+      </div>
+
+      <button type="submit">Ingresar</button>
+    </form>
+
+    <div class="extra-links">
+      <a href="Restablecer.html">¿Olvidaste tu contraseña?</a> |
+      <a href="inicio2.html">Volver al inicio</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>Connect Chile S.A. &copy; 2025 - Todos los derechos reservados</p>
+  </footer>
+
+  <!-- Scripts necesarios -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"></script>
+  <script>
+    function password_hash(password, token) {
+      return md5(password + token);
+    }
+
+    function alerta(tipo, mensaje) {
+      alert(mensaje); // Puedes reemplazar esto con una notificación más bonita si quieres
+    }
+
+    $('#loginForm').submit(function (e) {
+      e.preventDefault();
+
+      const login = $('#login').val().trim();
+      const password = $('#password').val().trim();
+      const remember = $('#remember_login').is(':checked');
+
+      if (!login || password.length < 2) {
+        alerta('error', 'Por favor, completá todos los campos correctamente.');
+        return;
+      }
+
+      const tokenlogin = $('#security_code').val();
+      const code = password_hash(password, tokenlogin);
+      const tk = $('#token').val();
+
+      $.ajax({
+        type: 'POST',
+        url: '/cliente/login',
+        data: {
+          login: login,
+          remenber: remember,
+          token: tk,
+          code: code
+        },
+        dataType: 'json',
+        success: function (data) {
+          if (data.estado === 'error') {
+            alerta('error', data.salida);
+            $('#token').val(data.token);
+            $('#security_code').val(data.code);
+          } else if (data.estado === 'success') {
+            top.location.href = '/cliente/#ajax/dashboard';
+          }
+        },
+        error: function () {
+          alerta('error', 'Error de conexión. Intente nuevamente.');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

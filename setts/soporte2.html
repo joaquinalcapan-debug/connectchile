@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Formulario de Soporte - Connect Chile</title>
+  <meta name="description" content="Completá el formulario para recibir soporte técnico sin costo.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" href="https://i0.wp.com/connectchile.cl/wp-content/uploads/2019/11/cropped-favicon_Mesa-de-trabajo-1.png?fit=32%2C32" sizes="32x32">
+  <style>
+    :root {
+      --rojo: #e63946;
+      --azul: #1d3557;
+      --blanco: #ffffff;
+      --gris: #f1faee;
+      --negro: #0b0b0b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', 'Roboto', sans-serif;
+      letter-spacing: 0.2px;
+    }
+
+    body {
+      background: linear-gradient(135deg, #e24b57 0%, #1d3557 100%);
+      color: var(--azul);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--negro);
+      color: var(--blanco);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    header img {
+      height: 50px;
+      padding: 8px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease;
+    }
+
+    header img:hover {
+      transform: scale(1.05);
+    }
+
+    nav a {
+      color: var(--blanco);
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--rojo);
+    }
+
+    .form-section {
+      padding: 5rem 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .form-section h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      color: var(--blanco);
+      text-align: center;
+    }
+
+    .form-section p {
+      font-size: 1.1rem;
+      margin-bottom: 3rem;
+      color: var(--blanco);
+      text-align: center;
+    }
+
+    .form-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    .form-left {
+      flex: 1 1 300px;
+      text-align: center;
+    }
+
+    .form-left img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+    .form-right {
+      flex: 1 1 400px;
+    }
+
+    form {
+      background: var(--gris);
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      animation: fadeIn 0.6s ease-out both;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--azul);
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 0.85rem;
+      margin-bottom: 1.2rem;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    input:focus, textarea:focus {
+      border-color: var(--rojo);
+      outline: none;
+      box-shadow: 0 0 6px rgba(230, 57, 70, 0.3);
+    }
+
+    button {
+      width: 100%;
+      background: var(--rojo);
+      color: var(--blanco);
+      border: none;
+      padding: 1rem;
+      font-size: 1.1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s;
+    }
+
+    button:hover {
+      background: var(--azul);
+      transform: translateY(-2px);
+    }
+
+    footer {
+      background: var(--azul);
+      color: var(--blanco);
+      text-align: center;
+      padding: 2.5rem;
+      font-size: 0.9rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .center-buttons {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: var(--azul);
+}
+
+.center-buttons .btn {
+  display: inline-block;
+  margin: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--rojo);
+  color: var(--blanco);
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.center-buttons .btn:hover {
+  background: var(--negro);
+  transform: translateY(-2px);
+}
+/* ---------- AJUSTE PARA 7 ENLACES EN NAV ---------- */
+.nav-centered {
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.nav-centered a {
+  font-size: 0.85rem;
+  padding: 0.4rem 0.6rem;
+  white-space: nowrap;
+}
+.footer-legal{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:var(--azul);
+  padding:1rem 2rem;
+  flex-wrap:wrap;
+  gap:1rem;
+}
+.legal-btns{
+  display:flex;
+  gap:.75rem;
+}
+.btn-legal{
+  display:inline-flex;
+  align-items:center;
+  gap:.4rem;
+  padding:.4rem .8rem;
+  font-size:.8rem;
+  background:var(--rojo);
+  color:var(--blanco);
+  border-radius:4px;
+  text-decoration:none;
+  transition:background .3s, transform .2s;
+}
+.btn-legal:hover{
+  background:var(--negro);
+  transform:translateY(-2px);
+}
+.legal-logo img{
+  height:36px;
+  filter:brightness(0) invert(1);
+}
+.legal-text{
+  margin-top:4px;
+  font-size:.75rem;
+  line-height:1.3;
+  color:var(--blanco);
+  text-align:left;
+}
+
+@media(max-width:600px){
+  .footer-legal{justify-content:center;text-align:center;}
+  .legal-btns{justify-content:center;}
+}
+  </style>
+</head>
+<body>
+
+ <header>
+  <div class="header-top">
+    <a href="inicio2.html" class="logo">
+      <img src="https://i0.wp.com/connectchile.cl/wp-content/uploads/2019/11/cropped-logoconnectchileOK.png" alt="Connect Chile">
+    </a>
+  </div>
+<nav>
+  <a href="inicio2.html">Inicio</a>
+  <a href="inicio2.html#planes">Planes</a>
+  <a href="inicio2.html#tecnologia">Tecnología</a>
+  <a href="inicio2.html#quienes-somos">Información</a>
+  <a href="inicio_de_factibilidad.html">Solicitar Factibilidad</a>
+  <a href="inicio_de_soporte.html">Soporte</a>
+  <a href="inicio_de_cobertura.html">Cobertura</a>
+</nav>
+  </header>
+
+  <!-- FORMULARIO -->
+  <section class="form-section">
+    <h2>Contactanos</h2>
+    <p>Completá el formulario y te respondemos en menos de 24 horas.</p>
+
+    <div class="form-wrapper">
+      <div class="form-left">
+        <img src="img/hol.png" alt="WiFi">
+        
+        <p></p>
+        <img src="img/joacoPollio.png" alt="">
+      </div>
+
+      <div class="form-right">
+        <div id="mensaje" style="display:none; padding: 1rem; margin-bottom: 1rem; border-radius: 8px; font-weight: bold;"></div>
+        <form action="guardar_soporte.php" method="POST">
+          <label><i class="fa-solid fa-user"></i> Nombre y Apellido</label>
+          <input type="text" name="nombre" required placeholder="Tu nombre completo">
+
+          <label><i class="fa-solid fa-envelope"></i> Email</label>
+          <input type="email" name="email" required placeholder="tu@email.com">
+
+          <label><i class="fa-solid fa-phone"></i> Teléfono / WhatsApp</label>
+          <input type="tel" name="telefono" required placeholder="+56 9 ...">
+
+          <label><i class="fa-solid fa-comment-dots"></i> Mensaje</label>
+          <textarea name="mensaje" rows="5" placeholder="Describí tu problema o consulta"></textarea>
+
+          <button type="submit">Enviar consulta</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+<!-- BLOQUE LEGAL + LOGO -->
+<div class="footer-legal">
+  <div class="legal-btns">
+    <a class="btn-legal" href="https://www.leychile.cl/Navegar?idNorma=1059429" target="_blank">
+      <img src="img/documento.svg.png" alt="" width="16" height="16">
+      Reglamento de Telecomunicaciones
+    </a>
+    <a class="btn-legal" href="https://www.bcn.cl/leychile/navegar?idNorma=1023845&idVersion=2011-03-18" target="_blank">
+      <img src="img/ley.svg.png" alt="" width="16" height="16">
+      Ley de neutralidad de la red
+    </a>
+  </div>
+
+  <div class="legal-logo">
+    <img src="https://i0.wp.com/connectchile.cl/wp-content/uploads/2019/11/cropped-logoconnectchileOK.png" alt="Connect Chile">
+    <div class="legal-text">
+      Connect Chile S.A.<br>
+      Bernardo O`higgins #307<br>
+      Panguipulli, Región de Los Ríos.
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER SIMPLE -->
+<footer>
+  <p>Connect Chile S.A. &copy; 2025 - Soporte Técnico</p>
+  <p><a href="https://www.australlab.cl" target="_blank">Powered by Austral LAB</a></p>
+</footer>
+
+
+  <script>
+    document.getElementById("soporteForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+      const object = {};
+      data.forEach((value, key) => {
+        object[key] = value;
+      });
+      alert("Gracias por contactarnos, " + object.nombre + ". Te responderemos pronto.");
+      form.reset();
+    });
+  </script>
+
+</body>
+</html>

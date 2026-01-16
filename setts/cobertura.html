@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cobertura - Connect Chile</title>
+  <meta name="description" content="Conocé las zonas donde Connect Chile tiene cobertura de internet inalámbrico.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" href="https://i0.wp.com/connectchile.cl/wp-content/uploads/2019/11/cropped-favicon_Mesa-de-trabajo-1.png?fit=32%2C32" sizes="32x32">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+  <style>
+    :root {
+      --rojo: #e63946;
+      --azul: #1d3557;
+      --blanco: #ffffff;
+      --gris: #f1faee;
+      --negro: #0b0b0b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', 'Roboto', sans-serif;
+      letter-spacing: 0.2px;
+    }
+
+    body {
+      background: linear-gradient(135deg, #e24b57 0%, #1d3557 100%);
+      color: var(--azul);
+      line-height: 1.6;
+    }
+
+    /* ---------- HEADER ---------- */
+    header {
+      background: var(--negro);
+      color: var(--blanco);
+      padding: 2rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    header img {
+      height: 50px;
+      padding: 8px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease;
+    }
+
+    header img:hover {
+      transform: scale(1.05);
+    }
+
+    nav a {
+      color: var(--blanco);
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--rojo);
+    }
+
+    /* ---------- COBERTURA ---------- */
+    .cobertura {
+      padding: 5rem 1rem;
+      background: transparent;
+      color: var(--blanco);
+      text-align: justify;
+    }
+
+    .cobertura .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .cobertura h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .cobertura p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 1.2rem;
+    }
+
+    .cobertura .highlight {
+      font-weight: 600;
+      color: var(--rojo);
+      font-size: 1.3rem;
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    /* ---------- MAPA ---------- */
+    #map {
+      width: 100%;
+      height: 500px;
+      margin: 2.5rem 0;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 18px rgba(0,0,0,.25);
+    }
+
+    /* ---------- BOTONES ---------- */
+    .center-buttons {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: var(--azul);
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--rojo);
+      color: var(--blanco);
+      border-radius: 6px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .btn:hover {
+      background: var(--negro);
+      transform: translateY(-2px);
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      background: var(--azul);
+      color: var(--blanco);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--blanco);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <a href="inicio2.html" class="logo">
+    <img src="https://i0.wp.com/connectchile.cl/wp-content/uploads/2019/11/cropped-logoconnectchileOK.png" alt="Connect Chile">
+  </a>
+  <nav>
+    <a href="inicio2.html">Inicio</a>
+    <a href="inicio2.html#planes">Planes</a>
+    <a href="inicio2.html#tecnologia">Tecnología</a>
+    <a href="inicio2.html#quienes-somos">Información</a>
+    <a href="inicio_de_factibilidad.html">Solicitar Factibilidad</a>
+    <a href="inicio_de_soporte.html">Soporte</a>
+    <a href="inicio_de_cobertura.html">Cobertura</a>
+  </nav>
+</header>
+
+<section class="cobertura">
+  <div class="container">
+    <h2>Zonas de Cobertura</h2>
+    <p>
+      En <strong>Connect Chile</strong> estamos expandiendo nuestra red de internet inalámbrico para llegar a más hogares y empresas de la región. Explorá el mapa para verificar si tu domicilio está dentro de nuestra cobertura actual.
+    </p>
+
+    <!-- CONTENEDOR DEL MAPA -->
+    <div id="map"></div>
+
+    <p class="highlight">
+      ¿No ves tu sector? ¡Contactanos! Estamos expandiendo cobertura cada mes.
+    </p>
+  </div>
+</section>
+
+<!-- BOTONES FOOTER -->
+<div class="center-buttons">
+  <a class="btn" href="https://www.leychile.cl/Navegar?idNorma=1059429" target="_blank">
+    <img src="img/documento.svg.png" alt="" width="20" height="20">
+    Reglamento de servicios de Telecomunicaciones
+  </a>
+  <a class="btn" href="https://www.bcn.cl/leychile/navegar?idNorma=1023845&idVersion=2011-03-18" target="_blank">
+    <img src="img/ley.svg.png" alt="" width="20" height="20">
+    Ley de neutralidad de la red
+  </a>
+</div>
+
+<footer>
+  <p>Connect Chile S.A. &copy; 2025 - Cobertura</p>
+  <p><a href="https://www.australlab.cl" target="_blank">Powered by Austral LAB</a></p>
+</footer>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+  /* ---------- INICIALIZAR MAPA ---------- */
+  const map = L.map('map').setView([-39.55, -72.03], 10); // Centro en Panguipulli
+
+  /* ---------- CAPA BASE (OSM) ---------- */
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  /* ---------- POLÍGONO DE COBERTURA (ejemplo) ---------- */
+  const coverageCoords = [
+    [-39.43,-72.21],[-39.48,-72.12],[-39.52,-72.08],
+    [-39.58,-72.06],[-39.64,-72.10],[-39.67,-72.18],
+    [-39.65,-72.26],[-39.60,-72.30],[-39.53,-72.32],
+    [-39.46,-72.29],[-39.43,-72.21]
+  ];
+
+  const coverageZone = L.polygon(coverageCoords, {
+    color: '#e63946',
+    fillColor: '#e63946',
+    fillOpacity: 0.25,
+    weight: 2
+  }).addTo(map);
+
+  coverageZone.bindPopup("<b>¡Zona con cobertura Connect Chile!</b><br>Consulta disponibilidad en tu domicilio.");
+
+  /* ---------- AJUSTAR VISTA AL POLÍGONO ---------- */
+  map.fitBounds(coverageZone.getBounds().pad(0.15));
+</script>
+
+</body>
+</html>
