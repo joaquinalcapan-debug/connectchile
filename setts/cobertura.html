@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cobertura - Connect Chile</title>
+  <meta name="description" content="Conocé las zonas donde Connect Chile tiene cobertura de internet inalámbrico.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" href="https://i0.wp.com/connectchile.cl/wp-content/uploads/2019/11/cropped-favicon_Mesa-de-trabajo-1.png?fit=32%2C32" sizes="32x32">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+  <style>
+    :root {
+      --rojo: #e63946;
+      --azul: #1d3557;
+      --blanco: #ffffff;
+      --gris: #f1faee;
+      --negro: #0b0b0b;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',Roboto,sans-serif;letter-spacing:.2px}
+    body{background:linear-gradient(135deg,#e24b57 0%,#1d3557 100%);color:var(--azul);line-height:1.6}
+    header{background:var(--negro);color:var(--blanco);padding:2rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+    header img{height:50px;padding:8px;background:rgba(255,255,255,.9);border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,.15);transition:transform .3s}
+    header img:hover{transform:scale(1.05)}
+    nav a{color:var(--blanco);margin:0 1rem;text-decoration:none;font-weight:600;transition:color .3s}
+    nav a:hover{color:var(--rojo)}
+    .cobertura{padding:5rem 1rem;background:transparent;color:var(--blanco);text-align:justify}
+    .cobertura .container{max-width:800px;margin:0 auto}
+    .cobertura h2{font-size:2.5rem;margin-bottom:2rem;text-align:center}
+    .cobertura p{font-size:1.1rem;line-height:1.8;margin-bottom:1.2rem}
+    .cobertura .highlight{font-weight:600;color:var(--rojo);font-size:1.3rem;margin-top:2rem;text-align:center}
+
+    /* contenedor del mapa + buscador centrado */
+    .map-wrapper{
+      position:relative;
+      display:flex;
+      flex-direction:column;
+      align-items:center;   /* centra el buscador */
+      width:100%;
+      margin:2.5rem 0;
+    }
+    #map{
+      width:100%;
+      height:500px;
+      border-radius:8px;
+      overflow:hidden;
+      box-shadow:0 4px 18px rgba(0,0,0,.25);
+    }
+    #searchBox{
+      margin-bottom:8px; /* separa el buscador del mapa */
+      background:#fff;
+      padding:6px;
+      border-radius:4px;
+      box-shadow:0 1px 5px rgba(0,0,0,.4);
+      z-index:1000;
+    }
+
+    .center-buttons{text-align:center;padding:3rem 1rem;background:var(--azul)}
+    .btn{display:inline-block;margin:.5rem;padding:.75rem 1.5rem;background:var(--rojo);color:var(--blanco);border-radius:6px;font-weight:600;text-decoration:none;transition:background .3s,transform .2s}
+    .btn:hover{background:var(--negro);transform:translateY(-2px)}
+    footer{background:var(--azul);color:var(--blanco);text-align:center;padding:2rem;font-size:.9rem}
+    footer a{color:var(--blanco);text-decoration:none}footer a:hover{text-decoration:underline}
+    @keyframes caerSuave{from{opacity:0;transform:translateY(-60px)}to{opacity:1;transform:translateY(0)}}
+    .caer-activa{animation:caerSuave .9s ease-out forwards}
+  </style>
+</head>
+
+<body>
+<header>
+  <a href="inicio2.html" class="logo"><img src="https://i0.wp.com/connectchile.cl/wp-content/uploads/2019/11/cropped-logoconnectchileOK.png" alt="Connect Chile"></a>
+  <nav>
+    <a href="inicio2.html">Inicio</a><a href="inicio2.html#planes">Planes</a><a href="inicio2.html#tecnologia">Tecnología</a>
+    <a href="inicio2.html#Información">Información</a><a href="inicio_de_factibilidad.html">Solicitar Factibilidad</a>
+    <a href="inicio_de_soporte.html">Soporte</a><a href="inicio_de_cobertura.html">Cobertura</a>
+  </nav>
+</header>
+
+<section class="cobertura">
+  <div class="container">
+    <h2>Zonas de Cobertura</h2>
+    <p>En <strong>Connect Chile</strong> estamos expandiendo nuestra red de internet inalámbrico para llegar a más hogares y empresas de la región. Explorá el mapa para verificar si tu domicilio está dentro de nuestra cobertura actual.</p>
+
+    <!-- Mapa + buscador centrado arriba -->
+    <div class="map-wrapper">
+      <div id="searchBox">
+        <input id="searchInput" type="text" placeholder="Busca tu ciudad o dirección" style="width:220px;padding:4px;">
+        <button id="searchBtn" style="padding:4px 8px;cursor:pointer;">Buscar</button>
+      </div>
+      <div id="map"></div>
+    </div>
+
+    <p class="highlight">¿No ves tu sector? ¡Contactanos! Estamos expandiendo cobertura cada mes.</p>
+  </div>
+</section>
+
+<div class="center-buttons">
+  <a class="btn" href="https://www.leychile.cl/Navegar?idNorma=1059429" target="_blank">
+    <img src="img/documento.svg.png" alt="" width="20" height="20"> Reglamento de servicios de Telecomunicaciones
+  </a>
+  <a class="btn" href="https://www.bcn.cl/leychile/navegar?idNorma=1023845&idVersion=2011-03-18" target="_blank">
+    <img src="img/ley.svg.png" alt="" width="20" height="20"> Ley de neutralidad de la red
+  </a>
+</div>
+
+<footer>
+  <p>Connect Chile S.A. &copy; 2025 - Cobertura</p>
+  <p><a href="https://www.australlab.cl" target="_blank">Powered by Austral LAB</a></p>
+</footer>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+  /* ---------- INICIALIZAR MAPA ---------- */
+  const map = L.map('map').setView([-39.55, -72.03], 10);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  const coverageCoords = [
+    [-39.59,-72.38],[-39.60,-72.32],[-39.64,-72.28],[-39.70,-72.30],
+    [-39.72,-72.36],[-39.68,-72.40],[-39.62,-72.42],[-39.59,-72.38]
+  ];
+  const coverageZone = L.polygon(coverageCoords, {
+    color: '#e63946',
+    fillColor: '#e63946',
+    fillOpacity: 0.25,
+    weight: 2
+  }).addTo(map).bindPopup("<b>¡Zona con cobertura Connect Chile!</b><br>Consulta disponibilidad en tu domicilio.");
+  map.fitBounds(coverageZone.getBounds().pad(0.15));
+</script>
+
+<script>
+  /* ---------- BÚSQUEDA + TEST COBERTURA ---------- */
+  const searchInput = document.getElementById('searchInput');
+  const searchBtn   = document.getElementById('searchBtn');
+
+  searchBtn.addEventListener('click', buscarLugar);
+  searchInput.addEventListener('keyup', e => { if (e.key === 'Enter') buscarLugar(); });
+
+  function buscarLugar(){
+    const q = searchInput.value.trim();
+    if(!q){ alert('Escribe una ciudad o dirección'); return; }
+
+    fetch(`https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${encodeURIComponent(q)}`)
+      .then(r => {
+        if(!r.ok) throw new Error('Respuesta no válida');
+        return r.json();
+      })
+      .then(arr => {
+        if(!arr || !arr.length){ alert('No se encontraron resultados'); return; }
+
+        const {lat, lon, display_name} = arr[0];
+        const latlng = [parseFloat(lat), parseFloat(lon)];
+
+        const dentro = pip(latlng, coverageCoords);
+
+        L.popup()
+          .setLatLng(latlng)
+          .setContent(
+            `<b>${display_name}</b><br>` +
+            (dentro
+              ? '<span style="color:#28a745">✅ Sí tienes cobertura de Connect Chile</span>'
+              : '<span style="color:#dc3545">❌ No tienes cobertura de Connect Chile</span>')
+          )
+          .openOn(map);
+
+        map.setView(latlng, 15);
+      })
+      .catch(() => alert('Error al buscar. Inténtalo de nuevo.'));
+  }
+
+  /* ---- ray-casting point-in-polygon ---- */
+  function pip(point, vs){
+    const [x, y] = point;
+    let inside = false;
+    for (let i = 0, j = vs.length - 1; i < vs.length; j = i++){
+      const xi = vs[i][0], yi = vs[i][1];
+      const xj = vs[j][0], yj = vs[j][1];
+      const intersect = ((yi > y) !== (yj > y)) &&
+                        (x < (xj - xi) * (y - yi) / (yj - yi) + xi);
+      if (intersect) inside = !inside;
+    }
+    return inside;
+  }
+</script>
+</body>
+</html>
+
+ 
