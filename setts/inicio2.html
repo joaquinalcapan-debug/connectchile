@@ -636,12 +636,13 @@ body.scroll-from-top {
 }
 
 /* Mostrar botón solo en móvil */
-@media (max-width: 768px) {
-  .nav-dots {
-    display: block;
+@media (min-width: 769px) {
+  .nav-dots,
+  .nav-dropdown {
+    display: none !important;
   }
   .nav-centered {
-    display: none; /* ocultamos el menú horizontal */
+    display: flex !important;
   }
 }
   </style>
@@ -876,6 +877,16 @@ Soporte cercano: atendemos de lunes a viernes en nuestra oficina de O’Higgins 
         section.classList.add('caer-activa');
       }, 400);
     });
+  });
+</script>
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const menu   = document.getElementById('nav-menu');
+  toggle?.addEventListener('click', () => menu.classList.toggle('open'));
+  document.addEventListener('click', e => {
+    if (!e.target.closest('#nav-toggle') && !e.target.closest('#nav-menu')) {
+      menu.classList.remove('open');
+    }
   });
 </script>
 </body>
