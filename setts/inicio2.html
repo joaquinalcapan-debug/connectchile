@@ -1,0 +1,777 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Connect Chile S.A. - Internet rural y urbano Panguipulli, Chile.</title>
+  <meta name="description" content="Servicios de internet y conectividad remota para Panguipulli, Chile.">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="icon" href="https://i0.wp.com/connectchile.cl/wp-content/uploads/2019/11/cropped-favicon_Mesa-de-trabajo-1.png?fit=32%2C32" sizes="32x32">
+
+  <style>
+    :root {
+      --rojo: #e63946;
+      --azul: #1d3557;
+      --blanco: #ffffff;
+      --gris: #f1faee;
+      --negro: #0b0b0b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', 'Roboto', sans-serif;
+      letter-spacing: 0.2px;
+    }
+
+    body {
+      background: var(--blanco);
+      color: var(--azul);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--negro);
+      color: #fff;
+      padding: 1rem 2rem;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    .header-buttons {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .header-buttons .btn-sm {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.85rem;
+    }
+
+    .nav-centered {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      padding: 0.5rem 0;
+    }
+
+    .nav-centered a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+      white-space: nowrap;
+      font-size: 0.95rem;
+    }
+
+    .nav-centered a:hover {
+      color: var(--rojo);
+    }
+    nav ul {
+  display: flex;              /* alinea los items en fila */
+  align-items: center;        /* centrados verticalmente */
+  justify-content: flex-end;  /* empuja todo a la derecha */
+  gap: 1.2rem;                /* espacio entre enlaces */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+nav ul li:last-child {
+  margin-left: auto;          /* lo manda al extremo derecho */
+}
+
+    .hero {
+      display: flex;
+      flex-direction: row-reverse;
+      flex-wrap: wrap;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 6rem 1.5rem;
+      gap: 2.5rem;
+      background: linear-gradient(135deg, var(--rojo) 0%, var(--azul) 100%);
+      color: var(--blanco);
+      border-radius: 0 0 20px 20px;
+    }
+
+    .hero-text {
+      flex: 1 1 320px;
+    }
+
+    .hero-text h1 {
+      font-size: 2.4rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 8px rgba(0,0,0,.25);
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: .75rem 1.5rem;
+      margin: .4rem .4rem .4rem 0;
+      background: var(--rojo);
+      color: var(--blanco);
+      border-radius: 6px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform .2s, box-shadow .2s, background .3s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,.2);
+      background: var(--azul);
+    }
+
+    .hero-carousel {
+      flex: 1 1 320px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, .1);
+    }
+
+    .swiper-slide img {
+      width: 100%;
+      display: block;
+    }
+
+    .slide-text {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, .45);
+      color: var(--blanco);
+      padding: 1.2rem 1rem;
+      text-align: center;
+    }
+
+    .slide-text h3 {
+      font-size: 1.3rem;
+      margin-bottom: .3rem;
+    }
+
+    .planes {
+      padding: 6rem 1rem;
+      text-align: center;
+      background: linear-gradient(135deg, var(--rojo) 0%, var(--azul) 100%);
+      color: var(--blanco);
+    }
+
+    .planes h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .planes .subtitle {
+      font-size: 1.1rem;
+      margin-bottom: 3rem;
+      opacity: 0.9;
+    }
+
+    .plan-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    @keyframes floatCard {
+      0%   { transform: translateY(0)   rotate(0); }
+      25%  { transform: translateY(-4px) rotate(-.6deg); }
+      50%  { transform: translateY(-6px) rotate(.6deg); }
+      75%  { transform: translateY(-4px) rotate(-.4deg); }
+      100% { transform: translateY(0)   rotate(0); }
+    }
+
+    .plan-card {
+      background: linear-gradient(135deg, rgba(133,135,170,.98) 0%, rgba(255,255,255,.85) 100%);
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      width: 280px;
+      box-shadow: 0 8px 20px rgba(0,0,0,.15);
+      transition: transform .3s ease, box-shadow .3s ease;
+      color: var(--azul);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .plan-card:hover {
+      animation: floatCard .9s ease-in-out infinite;
+      box-shadow: 0 12px 30px rgba(0,0,0,.25);
+    }
+
+    .plan-card:active {
+      transform: scale(.97);
+      transition: transform .1s;
+    }
+
+    .plan-card .icon {
+      font-size: 2.5rem;
+      color: var(--rojo);
+      margin-bottom: 1rem;
+    }
+
+    .plan-card h3 {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .plan-card .precio {
+      font-size: 2.2rem;
+      font-weight: bold;
+      margin: 1rem 0 0.5rem;
+      color: var(--rojo);
+    }
+
+    .plan-card .periodo {
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      opacity: 0.8;
+    }
+
+    .plan-card .features {
+      list-style: none;
+      padding: 0;
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+    }
+
+    .plan-card .features li {
+      margin-bottom: 0.5rem;
+    }
+
+    .plan-card .btn {
+      background: var(--rojo);
+      color: var(--blanco);
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .plan-card .btn:hover {
+      background: var(--negro);
+      transform: translateY(-2px);
+    }
+
+    .plan-card small {
+      display: block;
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      opacity: 0.7;
+    }
+
+    .note {
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      opacity: 0.85;
+    }
+
+    .tecnologia {
+  padding: 60px 40px;
+  background: linear-gradient(135deg, var(--gris) 0%, var(--negro) 100%);
+}
+
+.tecnologia-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 40px;
+}
+
+.tecnologia-texto p {
+  text-align: justify;
+  line-height: 1.6;
+}
+
+.tecnologia-imagen {
+  text-align: center;
+}
+
+.tecnologia-imagen img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+    .tecnologia h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .center-buttons {
+      text-align: center;
+      padding: 4rem 1rem 2rem;
+      background: var(--azul);
+    }
+
+    .center-buttons .btn {
+      margin: 0.5rem;
+    }
+
+    footer {
+      background: var(--negro);
+      color: var(--blanco);
+      text-align: center;
+      padding: 2rem;
+      font-size: .9rem;
+    }
+
+    footer a {
+      color: var(--blanco);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .hero, .plan-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    header img {
+      padding: 8px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease;
+    }
+
+    header img:hover {
+      transform: scale(1.05);
+    }
+
+    .swiper-pagination-bullet,
+    .swiper-pagination-bullet::after,
+    .swiper-pagination-bullet::before,
+    .swiper-slide *::after,
+    .swiper-slide *::before {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+    }
+
+    .Información {
+      padding: 5rem 1rem;
+      background: linear-gradient(135deg, var(--rojo) 0%, var(--azul) 100%);
+      color: var(--blanco);
+      text-align: justify;
+    }
+
+    .Información .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .Información h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .Información p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 1.2rem;
+    }
+
+    .Información .highlight {
+      font-weight: 600;
+      color: var(--rojo);
+      font-size: 1.3rem;
+      margin-top: 2rem;
+    }
+    .btn img {
+  vertical-align: middle;
+  margin-right: 0.4rem;
+  color: #ffffff;
+}
+.footer-legal{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:var(--azul);
+  padding:1rem 2rem;
+  flex-wrap:wrap;
+  gap:1rem;
+}
+.legal-btns{
+  display:flex;
+  gap:.75rem;
+}
+.btn-legal{
+  display:inline-flex;
+  align-items:center;
+  gap:.4rem;
+  padding:.4rem .8rem;
+  font-size:.8rem;
+  background:var(--rojo);
+  color:var(--blanco);
+  border-radius:4px;
+  text-decoration:none;
+  transition:background .3s, transform .2s;
+}
+.btn-legal:hover{
+  background:var(--negro);
+  transform:translateY(-2px);
+}
+.legal-logo img{
+  height:36px;
+  filter:brightness(0) invert(1);
+}
+.legal-text{
+  margin-top:4px;
+  font-size:.75rem;
+  line-height:1.3;
+  color:var(--blanco);
+  text-align:left;
+}
+
+@media(max-width:600px){
+  .footer-legal{justify-content:center;text-align:center;}
+  .legal-btns{justify-content:center;}
+}
+.legal-text {
+  margin-top: 4px;
+  font-size: 0.75rem;
+  line-height: 1.3;
+  color: var(--blanco);
+  text-align: left;
+}
+/* ============================= */
+/* ===== RESPONSIVE GLOBAL ===== */
+/* ============================= */
+@media (max-width: 768px) {
+
+  /* HERO */
+  .hero {
+    flex-direction: column;
+  }
+
+  .hero-text {
+    order: 1;
+  }
+
+  .hero-carousel {
+    order: 2;
+  }
+
+  /* FORMULARIO */
+  .form-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .form-left {
+    order: 2;
+  }
+
+  .form-right {
+    order: 1;
+  }
+
+  /* TECNOLOGÍA */
+  .tecnologia-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .tecnologia-texto {
+    order: 1;
+  }
+
+  .tecnologia-imagen {
+    order: 2;
+    margin-top: 25px;
+  }
+
+  /* AJUSTE GENERAL DE IMÁGENES */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+}
+body.scroll-from-top {
+  padding-top: 100vh; /* simula que estás muy arriba */
+  transition: padding-top 0s;
+}
+/* Animación de caída suave */
+@keyframes caerSuave {
+  from {
+    opacity: 0;
+    transform: translateY(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.caer-activa {
+  animation: caerSuave 0.9s ease-out forwards;
+}
+  </style>
+  
+</head>
+
+<body>
+
+<header>
+  <div class="header-top">
+    <a href="inicio2.html" class="logo">
+      <img src="https://i0.wp.com/connectchile.cl/wp-content/uploads/2019/11/cropped-logoconnectchileOK.png" alt="Connect Chile">
+    </a>
+    <div class="header-buttons">
+      <span>Acceso clientes:</span>
+      <a href="cliente.html" target="_blank" class="btn btn-sm">
+  <i class="fas fa-credit-card"></i> Paga tu cuenta aquí
+</a>
+
+    </div>
+  </div>
+  <nav class="nav-centered">
+    <a href="inicio2.html">Inicio</a>
+    <a href="inicio2.html#planes">Planes</a>
+    <a href="inicio2.html#tecnologia">Tecnología</a>
+    <a href="inicio2.html#Información">Información</a>
+    <a href="inicio_de_factibilidad.html">Solicitar Factibilidad</a>
+    <a href="inicio_de_soporte.html">Soporte</a>
+    <a href="inicio_de_cobertura.html">Cobertura</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-text">
+    <h1>Somos Connect Chile S.A. Internet inalámbrico para zonas rurales y urbanas.</h1>
+    <p>Solicite factibilidad técnica de instalación y cobertura.</p>
+    <p>Nuestros planes se encuentran afectos a factibilidad tecnica. Contáctese con nuestros consultores para solicitar una evaluación sin costo.</p>
+    <a href="inicio_de_factibilidad.html" class="btn">
+  <i class="far fa-file-alt"></i> Solicitar en Línea
+</a>
+
+    <a href="tel:+56999918468" class="btn">
+  <i class="fas fa-phone"></i> Llamar
+</a>
+
+  </div>
+  <div class="hero-carousel">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img src="img/connectchilepanguipulliinternet.svg" alt="Conecta tu home office">
+        <div class="slide-text">
+          <h3>Conecta tu home office</h3>
+          <p>Internet inalámbrico con transferencia ilimitada.</p>
+          <a href="#planes" class="btn" style="margin-top: .5rem;">Ver Planes</a>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <img src="img/descarga.jpg">
+        <div class="slide-text">
+          <h3>Estamos en Panguipulli</h3>
+          <p>Horario: lunes a viernes de 10:30 a 17:30 hrs.</p>
+          <a href="https://www.google.com/search?q=connect+chile+ohiggins+307" class="btn" target="_blank" style="margin-top: .5rem;">O'higgins #307</a>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <img src="img/joacopio.png" alt="Tecnología de punta">
+        <div class="slide-text">
+          <h3>Tecnología de punta</h3>
+          <p>Equipamiento de última generación para tu hogar o empresa.</p>
+          <a href="#tecnologia" class="btn" style="margin-top: .5rem;">Ver Tecnología</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="planes" class="planes">
+  <h2>Planes de Internet Sin Cables</h2>
+  <div class="plan-grid">
+    <div class="plan-card">
+      <h3>15 Mb</h3>
+      <p>Plan de Internet</p>
+      <div class="precio">$20.990</div>
+      <p>Mensual</p>
+      <p><i class="fa-solid fa-circle-check" style="color: var(--rojo);"></i> IVA INCLUIDO</p>
+      <a href="inicio_de_factibilidad.html" class="btn btn-factibilidad">Solicite Factibilidad</a>
+      <small>Consulte por valores de instalación</small>
+    </div>
+
+    <div class="plan-card">
+      <h3>25 Mb</h3>
+      <p>Plan de Internet</p>
+      <div class="precio">$35.990</div>
+      <p>Mensual</p>
+      <p><i class="fa-solid fa-circle-check" style="color: var(--rojo);"></i> IVA INCLUIDO</p>
+      <a href="inicio_de_factibilidad.html" class="btn btn-factibilidad">Solicite Factibilidad</a>
+      <small>Consulte por valores de instalación</small>
+    </div>
+
+    <div class="plan-card">
+      <h3>35 Mb</h3>
+      <p>Plan de Internet</p>
+      <div class="precio">$45.990</div>
+      <p>Mensual</p>
+      <p><i class="fa-solid fa-circle-check" style="color: var(--rojo);"></i> IVA INCLUIDO</p>
+      <a href="inicio_de_factibilidad.html" class="btn btn-factibilidad">Solicite Factibilidad</a>
+      <small>Consulte por valores de instalación</small>
+    </div>
+  </div>
+  <p class="note">Costo instalación: Panguipulli y alrededores $20.000. Valor final debe ser confirmado con factibilidad técnica.</p>
+</section>
+
+<section id="tecnologia" class="tecnologia">
+  <div class="tecnologia-wrapper">
+
+    <!-- TEXTO -->
+    <div class="tecnologia-texto">
+      <h2>Tecnología</h2>
+      <p>
+        En Connect Chile utilizamos tecnología de punta en equipamiento e instalaciones:
+        antenas de última generación que captan la señal a kilómetros de distancia,
+        routers de alta capacidad que distribuyen el internet por toda tu casa sin pérdidas,
+        y cableados reforzados que resisten el viento y la lluvia; todo monitoreado las 24
+        horas desde nuestra central para que tu conexión sea siempre rápida, estable y sin
+        interrupciones.
+      </p>
+    </div>
+
+    <!-- IMAGEN -->
+    <div class="tecnologia-imagen">
+      <img
+        src="img/antenas.png"
+        alt="Tecnología Connect Chile"
+      />
+    </div>
+
+  </div>
+</section>
+
+
+<section id="Información" class="Información">
+  <div class="container">
+    <h2>¿Qué es Connect Chile S.A?</h2>
+    <p>
+    Connect Chile S.A. es una empresa de internet inalámbrico nacida en Panguipulli, Región de Los Ríos, especializada en llevar conectividad de alta calidad a zonas rurales y urbanas que tradicionalmente han tenido acceso limitado o nulo a servicios confiables.    </p>
+    <p>
+    <h2>¿Cómo funciona?</h2>
+    <p>Evaluación sin costo: completás un formulario online o nos llamás; en menos de 24 horas verificamos si tu ubicación tiene cobertura.
+Instalación express: si hay señal, agendamos la instalación en 48 horas. Colocamos una antena receptora en tu techo y conectamos un router Wi-Fi dentro de tu casa o negocio.
+Planes claros: elegís el plan que se ajuste a tus necesidades (15, 25 o 35 Mb), todos con transferencia ilimitada y IVA incluido.
+Soporte cercano: atendemos de lunes a viernes en nuestra oficina de O’Higgins #307, vía WhatsApp o desde el portal de clientes, donde podés consultar tu consumo, descargar facturas y solicitar asistencia técnica sin costo.    <p>
+    <p class="highlight">
+      Sin cables, sin complicaciones: solo internet rápido, estable y con respaldo local.    </p>
+  </div>
+</section>
+
+<!-- BLOQUE LEGAL + LOGO -->
+<div class="footer-legal">
+  <div class="legal-btns">
+    <a class="btn-legal" href="https://www.leychile.cl/Navegar?idNorma=1059429" target="_blank">
+      <img src="img/documento.svg.png" alt="" width="16" height="16">
+      Reglamento de Telecomunicaciones
+    </a>
+    <a class="btn-legal" href="https://www.bcn.cl/leychile/navegar?idNorma=1023845&idVersion=2011-03-18" target="_blank">
+      <img src="img/ley.svg.png" alt="" width="16" height="16">
+      Ley de neutralidad de la red
+    </a>
+  </div>
+
+  <div class="legal-logo">
+    <img src="https://i0.wp.com/connectchile.cl/wp-content/uploads/2019/11/cropped-logoconnectchileOK.png" alt="Connect Chile">
+    <div class="legal-text">
+      Connect Chile S.A.<br>
+      Bernardo O`higgins #307<br>
+      Panguipulli, Región de Los Ríos.
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER SIMPLE -->
+<footer>
+  <p>Connect Chile S.A. &copy; 2025 - Soporte Técnico</p>
+  <p><a href="https://www.australlab.cl" target="_blank">Powered by Austral LAB</a></p>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  const swiper = new Swiper('.hero-carousel', {
+    loop: true,
+    speed: 800,
+    autoplay: {
+      delay: 6000,
+      disableOnInteraction: false,
+    },
+    effect: 'fade',
+    fadeEffect: { crossFade: true },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+      type: 'none',
+      renderBullet: function () { return ''; }
+    },
+  });
+
+  window.addEventListener('scroll', () => {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    document.getElementById('reading-progress').style.width = scrolled + '%';
+  });
+// Animación de caída suave al hacer clic en enlaces del menú
+  ['#planes', '#tecnologia', '#Información'].forEach(anchor => {
+    const link = document.querySelector(`a[href="inicio2.html${anchor}"]`);
+    const section = document.querySelector(anchor);
+
+    if (!link || !section) return;
+
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      setTimeout(() => {
+        section.classList.remove('caer-activa');
+        void section.offsetWidth;
+        section.classList.add('caer-activa');
+      }, 400);
+    });
+  });
+</script>
+</body>
+</html>
