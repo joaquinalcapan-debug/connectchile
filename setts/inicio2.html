@@ -545,6 +545,36 @@ body.scroll-from-top {
 .caer-activa {
   animation: caerSuave 0.9s ease-out forwards;
 }
+/* ===== MÓVIL: carrusel debajo del texto ===== */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;   /* texto arriba, carrusel abajo */
+  }
+  .hero-text {
+    order: 1;
+  }
+  .hero-carousel {
+    order: 2;
+    width: 100%;              /* que ocupe todo el ancho */
+    max-width: 100%;
+    margin-top: 1.5rem;       /* separación */
+  }
+  /* imágenes del carrusel: que no se recorten */
+  .swiper-slide img {
+    width: 100%;
+    height: auto;             /* mantiene proporción */
+    max-height: 45vh;         /* altura máxima razonable */
+    object-fit: contain;      /* sin recorte */
+  }
+  /* texto interno del slide más chico */
+  .slide-text {
+    font-size: 0.9rem;
+    padding: 0.8rem;
+  }
+  .slide-text h3 {
+    font-size: 1.1rem;
+  }
+}
   </style>
   
 </head>
