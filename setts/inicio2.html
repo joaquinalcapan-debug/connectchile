@@ -636,14 +636,16 @@ body.scroll-from-top {
 }
 
 /* Mostrar botón solo en móvil */
+/* ===== MOSTRAR/OCULTAR SEGÚN ANCHO ===== */
+@media (max-width: 768px) {
+  .nav-centered { display: none; }   /* oculto en móvil */
+  .nav-dots     { display: block; }  /* visible en móvil */
+}
+
 @media (min-width: 769px) {
+  .nav-centered { display: flex; }   /* visible en desktop */
   .nav-dots,
-  .nav-dropdown {
-    display: none !important;
-  }
-  .nav-centered {
-    display: flex !important;
-  }
+  .nav-dropdown { display: none; }   /* oculto en desktop */
 }
   </style>
   
@@ -889,5 +891,6 @@ Soporte cercano: atendemos de lunes a viernes en nuestra oficina de O’Higgins 
     }
   });
 </script>
+
 </body>
 </html>
