@@ -595,54 +595,66 @@ body.scroll-from-top {
 }
 .nav-dots:hover span { background: var(--rojo); }
 
-/* ========= MENÚ DESPLEGABLE ========= */
 .nav-dropdown {
   list-style: none;
-  margin: 0;
   padding: 0;
+  margin: 0;
   position: absolute;
-  top: -300px; /* FUERA de la vista */
+  top: -400px;
   left: 0;
   right: 0;
   background: var(--negro);
-  overflow: hidden;
-
   opacity: 0;
   pointer-events: none;
-
-  transition:
-    top 0.45s ease,
-    opacity 0.3s ease;
-
+  transition: top 0.45s ease, opacity 0.3s ease;
   z-index: 150;
 }
 
 .nav-dropdown.open {
-  top: 100%; /* BAJA debajo del header */
+  top: 100%;
   opacity: 1;
   pointer-events: auto;
 }
 
-/* Ítems */
-.nav-dropdown li {
+.nav-dropdown > li {
   border-bottom: 1px solid #333;
 }
 
-.nav-dropdown a {
+/* ===== SUBMENÚ ===== */
+.submenu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: #111;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+}
+
+.submenu.open {
+  max-height: 300px;
+  opacity: 1;
+}
+
+.submenu a {
   display: block;
-  padding: 1rem;
+  padding: 0.75rem 1.5rem;
   color: var(--blanco);
-  font-weight: 600;
   text-decoration: none;
 }
 
-
-/* Ocultar botón en desktop */
-.nav-dots {
-  display: none;
+/* ===== BOTÓN SUBMENÚ ===== */
+.submenu-toggle {
+  all: unset;
+  width: 100%;
+  padding: 1rem;
+  cursor: pointer;
+  color: var(--blanco);
+  font-weight: 600;
 }
 
-/* Mostrar botón solo en móvil */
+/* ===== MEDIA QUERIES ===== */
 @media (max-width: 768px) {
   .nav-centered { display: none; }
   .nav-dots { display: block; }
@@ -654,17 +666,47 @@ body.scroll-from-top {
   .nav-dots,
   .nav-dropdown { display: none; }
 }
-
 header {
   position: relative;
 }
+.submenu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: #111;
 
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+
+  transition:
+    max-height 0.4s ease,
+    opacity 0.3s ease;
+}
+
+.submenu.open {
+  max-height: 200px;
+  opacity: 1;
+}
+
+.submenu a {
+  display: block;
+  padding: 0.75rem 1.5rem;
+  color: var(--blanco);
+  font-size: 0.9rem;
+}
+
+/* Item con submenú */
+.has-submenu > a {
+  display: block;
+  padding: 1rem;
+  font-weight: 600;
+  color: var(--blanco);
+}
 
   </style>
   
 </head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <body>
 
 <header >
@@ -697,13 +739,33 @@ header {
 <!-- Menú desplegable (solo móvil) -->
 <ul id="nav-menu" class="nav-dropdown">
   <li><a href="inicio2.html">Inicio</a></li>
-  <li><a href="inicio2.html#planes">Planes</a></li>
-  <li><a href="inicio2.html#tecnologia">Tecnología</a></li>
-  <li><a href="inicio2.html#Información">Información</a></li>
+
+  <li class="has-submenu">
+    <a href="inicio2.html#planes" class="submenu-toggle">Planes</a>
+    <ul class="submenu">
+      <li><a href="inicio2.html#planes">Ver Planes</a></li>
+    </ul>
+  </li>
+
+  <li class="has-submenu">
+    <a href="inicio2.html#tecnologia" class="submenu-toggle">Tecnología</a>
+    <ul class="submenu">
+      <li><a href="inicio2.html#tecnologia">Nuestra Tecnología</a></li>
+    </ul>
+  </li>
+
+  <li class="has-submenu">
+    <a href="inicio2.html#Información" class="submenu-toggle">Información</a>
+    <ul class="submenu">
+      <li><a href="inicio2.html#Información">Quiénes Somos</a></li>
+    </ul>
+  </li>
+
   <li><a href="inicio_de_factibilidad.html">Solicitar Factibilidad</a></li>
   <li><a href="inicio_de_soporte.html">Soporte</a></li>
   <li><a href="inicio_de_cobertura.html">Cobertura</a></li>
 </ul>
+
 </header>
 
 <section class="hero">
@@ -913,6 +975,36 @@ Soporte cercano: atendemos de lunes a viernes en nuestra oficina de O’Higgins 
       menu.classList.remove('open');
     }
   });
+</script>
+<script>
+document.querySelectorAll('.submenu-toggle').forEach(link => {
+  let opened = false;
+
+  link.addEventListener('click', e => {
+    const submenu = link.nextElementSibling;
+
+    if (!opened) {
+      e.preventDefault(); // PRIMER click: animación
+      document.querySelectorAll('.submenu').forEach(s => {
+        if (s !== submenu) s.classList.remove('open');
+      });
+      submenu.classList.add('open');
+      opened = true;
+
+      // reset al cerrar
+      document.addEventListener('click', ev => {
+        if (!link.contains(ev.target) && !submenu.contains(ev.target)) {
+          submenu.classList.remove('open');
+          opened = false;
+        }
+      }, { once: true });
+
+    } else {
+      // SEGUNDO click: deja navegar normalmente
+      opened = false;
+    }
+  });
+});
 </script>
 
 </body>
