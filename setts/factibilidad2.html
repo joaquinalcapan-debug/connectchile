@@ -251,16 +251,7 @@ footer {
 }
   </style>
 </head>
-<script>
-  const toggle = document.getElementById('nav-toggle');
-  const menu = document.getElementById('nav-menu');
-  toggle?.addEventListener('click', () => menu.classList.toggle('open'));
-  document.addEventListener('click', e => {
-    if (!e.target.closest('#nav-toggle') && !e.target.closest('#nav-menu')) {
-      menu.classList.remove('open');
-    }
-  });
-</script>
+
 <body>
 
 <header>
@@ -444,6 +435,15 @@ footer {
     });
   });</script>
   </script>
-
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const menu = document.getElementById('nav-menu');
+  toggle?.addEventListener('click', () => menu.classList.toggle('open'));
+  document.addEventListener('click', e => {
+    if (!e.target.closest('#nav-toggle') && !e.target.closest('#nav-menu')) {
+      menu.classList.remove('open');
+    }
+  });
+</script>
 </body>
 </html>
