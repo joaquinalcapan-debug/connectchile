@@ -275,11 +275,25 @@
 .nav-dropdown a:hover {
   background: var(--rojo);
 }
+/* Ocultar botón en desktop */
+.nav-dots {
+  display: none;
+}
 
 /* Mostrar solo en móvil */
 @media (max-width: 768px) {
   .nav-dots { display: block; }
   .nav-centered { display: none; }
+}
+/* Ocultar menú en móvil por defecto */
+@media (max-width: 768px) {
+  .nav-dropdown {
+    display: none;
+  }
+
+  .nav-dropdown.open {
+    display: block;
+  }
 }
   </style>
 </head>
