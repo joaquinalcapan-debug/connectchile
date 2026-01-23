@@ -636,24 +636,30 @@ body.scroll-from-top {
 }
 
 /* Mostrar botón solo en móvil */
-/* ===== MOSTRAR/OCULTAR SEGÚN ANCHO ===== */
-@media (max-width: 768px) {
-  .nav-centered { display: none; }   /* oculto en móvil */
-  .nav-dots     { display: block; }  /* visible en móvil */
+@media (min-width: 769px) {
+  .nav-centered { display: flex; }
+  .nav-dots { display: none; }
+  .nav-dropdown { display: none; }
 }
 
-@media (min-width: 769px) {
-  .nav-centered { display: flex; }   /* visible en desktop */
-  .nav-dots,
-  .nav-dropdown { display: none; }   /* oculto en desktop */
+@media (max-width: 768px) {
+  .nav-centered { display: none; }
+  .nav-dots { display: block; }
+  .nav-dropdown { display: block; } /* 👈 ESTO ES CLAVE */
 }
+header {
+  position: relative;
+}
+
+
   </style>
   
 </head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <body>
 
-<header>
+<header >
   <div class="header-top">
     <a href="inicio2.html" class="logo">
       <img src="https://i0.wp.com/connectchile.cl/wp-content/uploads/2019/11/cropped-logoconnectchileOK.png" alt="Connect Chile">
