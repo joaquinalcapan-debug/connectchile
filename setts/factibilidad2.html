@@ -551,5 +551,17 @@ header {
       }, 400);
     });
   });</script>
+  </script>
+<script>const toggle = document.getElementById('nav-toggle');
+const menu = document.getElementById('nav-menu');
+
+toggle?.addEventListener('click', () => menu.classList.toggle('open'));
+
+// Cerrar al hacer clic fuera
+document.addEventListener('click', e => {
+  if (!e.target.closest('#nav-toggle') && !e.target.closest('#nav-menu')) {
+    menu.classList.remove('open');
+  }
+});</script>
 </body>
 </html>
