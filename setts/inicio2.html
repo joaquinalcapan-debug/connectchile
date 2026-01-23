@@ -595,20 +595,31 @@ body.scroll-from-top {
 }
 .nav-dots:hover span { background: var(--rojo); }
 
+
 .nav-dropdown {
   list-style: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
+
   position: absolute;
-  top: -400px;
+  top: 100%;
   left: 0;
   right: 0;
-  background: var(--negro);
+
+  background: #fff;          /* BLANCO */
+  overflow: hidden;
+
+  transform: translateY(-20px);
   opacity: 0;
   pointer-events: none;
-  transition: top 0.45s ease, opacity 0.3s ease;
+
+  transition:
+    transform 0.35s ease,
+    opacity 0.25s ease;
+
   z-index: 150;
 }
+
 
 .nav-dropdown.open {
   top: 100%;
@@ -706,15 +717,6 @@ header {
 html {
   scroll-behavior: smooth;
 }
-/* ===== FORZAR LINKS DEL MENÚ EN BLANCO ===== */
-.nav-dropdown a,
-.nav-dropdown a:visited,
-.nav-dropdown a:hover,
-.nav-dropdown a:active {
-  color: var(--blanco);
-  text-decoration: none;
-}
-
   </style>
   
 </head>
