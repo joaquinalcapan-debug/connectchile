@@ -645,19 +645,23 @@ body.scroll-from-top {
 }
 
 /* Mostrar botón solo en móvil */
-@media (min-width: 769px) {
-  .nav-centered { display: flex; }
-  .nav-dots { display: none; }
-  .nav-dropdown { display: none; }
-}
-
 @media (max-width: 768px) {
   .nav-centered { display: none; }
   .nav-dots { display: block; }
-  .nav-dropdown { display: block; } /* 👈 ESTO ES CLAVE */
+  .nav-dropdown { display: block; }
 }
+
+@media (min-width: 769px) {
+  .nav-centered { display: flex; }
+  .nav-dots,
+  .nav-dropdown { display: none; }
+}
+
 header {
   position: relative;
+}
+.nav-dropdown {
+  box-shadow: 0 12px 25px rgba(0,0,0,0.4);
 }
 
 
