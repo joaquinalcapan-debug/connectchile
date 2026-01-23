@@ -341,31 +341,16 @@
   display: none;
 }
 
+/* ===== MOSTRAR/OCULTAR SEGÚN ANCHO ===== */
 @media (max-width: 768px) {
-  .nav-centered { display: none; }
-  .nav-dots { display: block; }
-  .nav-dropdown { display: block; }
+  nav { display: none; }        /* oculto menú viejo */
+  .nav-dots { display: block; } /* visible botón 3 puntos */
 }
 
 @media (min-width: 769px) {
-  .nav-centered { display: flex; }
+  nav { display: flex; }        /* visible menú horizontal */
   .nav-dots,
-  .nav-dropdown { display: none; }
-}
-header {
-  position: relative;
-}
-@media (max-width: 768px) {
-  header nav {
-    display: none !important;
-  }
-}
-@media (max-width: 768px) {
-  #nav-toggle {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-  }
+  .nav-dropdown { display: none; } /* oculto botón y desplegable */
 }
   </style>
 </head>
