@@ -596,37 +596,30 @@ body.scroll-from-top {
 .nav-dots:hover span { background: var(--rojo); }
 
 /* ========= MENÚ DESPLEGABLE ========= */
-/* ========= MENÚ DESPLEGABLE DESDE ARRIBA ========= */
 .nav-dropdown {
   list-style: none;
   margin: 0;
   padding: 0;
   position: absolute;
-  top: 0;
+  top: -300px; /* FUERA de la vista */
   left: 0;
   right: 0;
   background: var(--negro);
   overflow: hidden;
 
-  /* Animación */
-  max-height: 0;
   opacity: 0;
-  transform: translateY(-20px);
   pointer-events: none;
 
   transition:
-    max-height 0.45s ease,
-    opacity 0.3s ease,
-    transform 0.45s ease;
+    top 0.45s ease,
+    opacity 0.3s ease;
 
   z-index: 150;
 }
 
-/* Cuando se abre */
 .nav-dropdown.open {
-  max-height: 500px; /* suficiente para todas las opciones */
+  top: 100%; /* BAJA debajo del header */
   opacity: 1;
-  transform: translateY(60px); /* BAJA desde arriba */
   pointer-events: auto;
 }
 
@@ -664,8 +657,6 @@ body.scroll-from-top {
 
 header {
   position: relative;
-  transform: translateY(80px);
-
 }
 
 
