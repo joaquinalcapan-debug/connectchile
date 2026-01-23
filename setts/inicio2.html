@@ -596,6 +596,7 @@ body.scroll-from-top {
 .nav-dots:hover span { background: var(--rojo); }
 
 /* ========= MENÚ DESPLEGABLE ========= */
+/* ========= MENÚ DESPLEGABLE ANIMADO ========= */
 .nav-dropdown {
   list-style: none;
   margin: 0;
@@ -604,35 +605,43 @@ body.scroll-from-top {
   top: 100%;
   right: 1rem;
   background: var(--negro);
-  border-radius: 6px;
+  border-radius: 8px;
   overflow: hidden;
-  max-height: 0;
+  transform: translateY(-15px);
   opacity: 0;
   pointer-events: none;
-  transition: max-height 0.3s ease, opacity 0.3s ease;
+  transition: transform 0.35s ease, opacity 0.35s ease;
   z-index: 150;
 }
+
+/* Cuando está abierto */
 .nav-dropdown.open {
-  max-height: 500px;
+  transform: translateY(0);
   opacity: 1;
   pointer-events: auto;
 }
-.nav-dropdown li { border-bottom: 1px solid #333; }
-.nav-dropdown li:last-child { border: none; }
+
+/* Ítems */
+.nav-dropdown li {
+  border-bottom: 1px solid #333;
+}
+
+.nav-dropdown li:last-child {
+  border: none;
+}
+
 .nav-dropdown a {
   display: block;
-  padding: 0.75rem 1.2rem;
+  padding: 0.85rem 1.3rem;
   color: var(--blanco);
   font-weight: 600;
   text-decoration: none;
   white-space: nowrap;
   transition: background 0.2s;
 }
-.nav-dropdown a:hover { background: var(--rojo); }
 
-/* Ocultar botón en desktop */
-.nav-dots {
-  display: none;
+.nav-dropdown a:hover {
+  background: var(--rojo);
 }
 
 /* Mostrar botón solo en móvil */
