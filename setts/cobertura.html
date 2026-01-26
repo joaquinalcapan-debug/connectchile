@@ -66,13 +66,51 @@
 </head>
 
 <body>
-<header>
-  <a href="inicio2.html" class="logo"><img src="https://i0.wp.com/connectchile.cl/wp-content/uploads/2019/11/cropped-logoconnectchileOK.png" alt="Connect Chile"></a>
-  <nav>
-    <a href="inicio2.html">Inicio</a><a href="inicio2.html#planes">Planes</a><a href="inicio2.html#tecnologia">Tecnología</a>
-    <a href="inicio2.html#Información">Información</a><a href="inicio_de_factibilidad.html">Solicitar Factibilidad</a>
-    <a href="inicio_de_soporte.html">Soporte</a><a href="inicio_de_cobertura.html">Cobertura</a>
+<header style="background:var(--negro); color:#fff; padding:1rem 2rem; position:relative;">
+  <!-- LÍNEA SUPERIOR -->
+  <div style="display:flex; justify-content:space-between; align-items:center;">
+    <!-- Logo arriba-izquierda -->
+    <a href="inicio2.html" class="logo">
+      <img src="https://i0.wp.com/connectchile.cl/wp-content/uploads/2019/11/cropped-logoconnectchileOK.png" alt="Connect Chile" style="height:50px; padding:8px; background:rgba(255,255,255,.9); border-radius:10px;">
+    </a>
+
+    <!-- Acceso clientes arriba-derecha -->
+    <div style="display:flex; align-items:center; gap:.5rem; font-size:.9rem;">
+      <span>Acceso clientes:</span>
+      <a href="cliente.html" target="_blank" class="btn-sm" style="padding:.4rem .8rem; background:var(--rojo); color:#fff; border-radius:4px; text-decoration:none; font-size:.85rem;">
+        Paga tu cuenta aquí
+      </a>
+    </div>
+  </div>
+
+  <!-- LÍNEA INFERIOR: menú centrado -->
+  <nav style="display:flex; justify-content:center; flex-wrap:wrap; gap:1.2rem; margin-top:.5rem;">
+    <a href="inicio2.html" style="color:#fff; text-decoration:none; font-weight:600;">Inicio</a>
+    <a href="inicio2.html#planes" style="color:#fff; text-decoration:none; font-weight:600;">Planes</a>
+    <a href="inicio2.html#tecnologia" style="color:#fff; text-decoration:none; font-weight:600;">Tecnología</a>
+    <a href="inicio2.html#Información" style="color:#fff; text-decoration:none; font-weight:600;">Información</a>
+    <a href="inicio_de_factibilidad.html" style="color:#fff; text-decoration:none; font-weight:600;">Solicitar Factibilidad</a>
+    <a href="inicio_de_soporte.html" style="color:#fff; text-decoration:none; font-weight:600;">Soporte</a>
+    <a href="inicio_de_cobertura.html" style="color:#fff; text-decoration:none; font-weight:600;">Cobertura</a>
   </nav>
+
+  <!-- Botón 3 puntitos (móvil) -->
+  <button id="nav-toggle" aria-label="Menú" style="display:none; position:absolute; top:1rem; right:1rem; background:none; border:none; cursor:pointer;">
+    <span style="display:block; width:5px; height:5px; margin:3px 0; background:#fff; border-radius:50%;"></span>
+    <span style="display:block; width:5px; height:5px; margin:3px 0; background:#fff; border-radius:50%;"></span>
+    <span style="display:block; width:5px; height:5px; margin:3px 0; background:#fff; border-radius:50%;"></span>
+  </button>
+
+  <!-- Menú desplegable móvil -->
+  <ul id="nav-menu" style="display:none; position:absolute; top:100%; right:1rem; width:220px; background:#000; transform:translateY(-10px); opacity:0; pointer-events:none; transition:.3s; z-index:900; list-style:none; padding:0; margin:0;">
+    <li><a href="inicio2.html" style="display:block; padding:1rem; color:#fff; text-decoration:none;">Inicio</a></li>
+    <li><a href="inicio2.html#planes" style="display:block; padding:1rem; color:#fff; text-decoration:none;">Planes</a></li>
+    <li><a href="inicio2.html#tecnologia" style="display:block; padding:1rem; color:#fff; text-decoration:none;">Tecnología</a></li>
+    <li><a href="inicio2.html#Información" style="display:block; padding:1rem; color:#fff; text-decoration:none;">Información</a></li>
+    <li><a href="inicio_de_factibilidad.html" style="display:block; padding:1rem; color:#fff; text-decoration:none;">Solicitar Factibilidad</a></li>
+    <li><a href="inicio_de_soporte.html" style="display:block; padding:1rem; color:#fff; text-decoration:none;">Soporte</a></li>
+    <li><a href="inicio_de_cobertura.html" style="display:block; padding:1rem; color:#fff; text-decoration:none;">Cobertura</a></li>
+  </ul>
 </header>
 
 <section class="cobertura">
