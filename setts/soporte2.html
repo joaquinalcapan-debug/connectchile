@@ -37,7 +37,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
+      position: relative;
+      z-index: 100;
     }
 
     header img {
@@ -204,6 +205,94 @@
   padding: 0.4rem 0.6rem;
   white-space: nowrap;
 }
+
+.nav-dots {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 201;
+  margin-left: auto;
+}
+
+.nav-dots span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.nav-dots.open span:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+.nav-dots.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-dots.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* ---------- MENÚ DESPLEGABLE ---------- */
+.nav-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: rgba(11, 11, 11, 0.98);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+  z-index: 150;
+  backdrop-filter: blur(10px);
+}
+
+.nav-dropdown.open {
+  max-height: 500px;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.nav-dropdown a {
+  display: block;
+  padding: 1rem 2rem;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-dropdown a:hover,
+.nav-dropdown a:active {
+  background-color: var(--rojo);
+  color: #fff;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (min-width: 769px) {
+  .nav-dots { display: none; }
+  .nav-dropdown { display: none; }
+  nav { display: flex !important; }
+}
+
+@media (max-width: 768px) {
+  nav { display: none; }
+  .nav-dots { display: flex; }
+}
+
 .footer-legal{
   display:flex;
   justify-content:space-between;
@@ -248,90 +337,6 @@
 @media(max-width:600px){
   .footer-legal{justify-content:center;text-align:center;}
   .legal-btns{justify-content:center;}
-}
-/* Animación de caída suave */
-@keyframes caerSuave {
-  from {
-    opacity: 0;
-    transform: translateY(-60px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.caer-activa {
-  animation: caerSuave 0.9s ease-out forwards;
-}
-/* ---------- HEADER UNIFICADO ---------- */
-header {
-  position: relative;   /* ← indispensable para que el botón se ancle aquí */
-}
-
-.header-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;          /* ← fuerza que ocupe todo el ancho */
-  padding: 1rem 2rem;   /* mismo relleno que en inicio2.html */
-}
-
-/* ---------- BOTÓN 3 PUNTOS ---------- */
-/* ---------- BOTÓN 3 PUNTOS (móvil) ---------- */
-#nav-toggle {
-  display: none;
-  position: absolute;
-  top: 1.2rem;
-  right: 2rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 200;
-}
-#nav-toggle span {
-  display: block;
-  width: 5px;
-  height: 5px;
-  margin: 3px 0;
-  background: #fff;
-  border-radius: 50%;
-  transition: 0.3s;
-}
-@media (max-width: 768px) {
-  #nav-toggle { display: block; }
-}
-
-/* ---------- MENÚ DESPLEGABLE ---------- */
-#nav-menu {             /* id que ya usas */
-  position: absolute;
-  top: 100%;
-  right: 2rem;
-  width: 100%;
-  max-width: 320px;
-  background: #000;
-  transform: translateY(-10px);
-  opacity: 0;
-  pointer-events: none;
-  transition: 0.3s;
-  z-index: 900;
-}
-
-#nav-menu.open {
-  transform: translateY(0);
-  opacity: 1;
-  pointer-events: auto;
-}
-
-/* ---------- MOSTRAR / OCULTAR ---------- */
-@media (min-width: 769px) {
-  #nav-toggle,
-  #nav-menu { display: none; }
-}
-
-@media (max-width: 768px) {
-  .nav-centered { display: none; }
-  #nav-toggle { display: block; }
 }
   </style>
 </head>
@@ -468,8 +473,27 @@ header {
   const toggle = document.getElementById("nav-toggle");
   const menu = document.getElementById("nav-menu");
 
-  toggle.addEventListener("click", () => {
+  // Abrir/cerrar menú al hacer clic en botón
+  toggle.addEventListener("click", (e) => {
+    e.stopPropagation();
     menu.classList.toggle("open");
+    toggle.classList.toggle("open");
+  });
+
+  // Cerrar menú al hacer clic en un enlace
+  document.querySelectorAll("#nav-menu a").forEach(link => {
+    link.addEventListener("click", () => {
+      menu.classList.remove("open");
+      toggle.classList.remove("open");
+    });
+  });
+
+  // Cerrar menú al hacer clic fuera
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest("header")) {
+      menu.classList.remove("open");
+      toggle.classList.remove("open");
+    }
   });
 </script>
 

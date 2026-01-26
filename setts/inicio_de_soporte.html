@@ -37,7 +37,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
+      position: relative;
+      z-index: 100;
     }
 
     header img {
@@ -318,105 +319,88 @@
   animation: caerSuave 0.9s ease-out forwards;
 }
 .nav-dots {
-  display: none;            /* oculto en desktop */
-  position: relative;
+  display: none;
+  flex-direction: column;
+  gap: 5px;
   background: none;
   border: none;
   cursor: pointer;
   padding: 0.5rem;
-  z-index: 200;
+  z-index: 201;
+  margin-left: auto;
 }
+
 .nav-dots span {
   display: block;
-  width: 5px;
-  height: 5px;
-  margin: 3px 0;
-  background: var(--blanco);
-  border-radius: 50%;
-  transition: 0.3s;
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+  transition: all 0.3s ease;
 }
-.nav-dots:hover span { background: var(--rojo); }
 
+.nav-dots.open span:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
 
-/* ========= MENÚ DESPLEGABLE ========= */
+.nav-dots.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-dots.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* ---------- MENÚ DESPLEGABLE ---------- */
 .nav-dropdown {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-
   position: absolute;
   top: 100%;
   left: 0;
   right: 0;
-
-  background: #000000;          /* BLANCO */
+  width: 100%;
+  background: rgba(11, 11, 11, 0.98);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 0;
   overflow: hidden;
-
-  transform: translateY(-20px);
   opacity: 0;
   pointer-events: none;
-
-  transition:
-    transform 0.35s ease,
-    opacity 0.25s ease;
-
+  transition: max-height 0.4s ease, opacity 0.3s ease;
   z-index: 150;
+  backdrop-filter: blur(10px);
 }
 
 .nav-dropdown.open {
-  transform: translateY(0);
+  max-height: 500px;
   opacity: 1;
   pointer-events: auto;
 }
 
-/* Ítems */
-.nav-dropdown li {
-  border-bottom: 1px solid #e5e5e5;
-}
-
 .nav-dropdown a {
   display: block;
-  padding: 1rem;
-  color: #ffffff;
-  font-weight: 600;
+  padding: 1rem 2rem;
+  color: #fff;
   text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Hover */
-.nav-dropdown a:hover {
-  background: #ff0000;
+.nav-dropdown a:hover,
+.nav-dropdown a:active {
+  background-color: var(--rojo);
+  color: #fff;
 }
 
-/* Ocultar botón en desktop */
-.nav-dots {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  .nav-centered { display: none; }
-  .nav-dots { display: block; }
-  .nav-dropdown { display: block; }
-}
-
+/* ---------- RESPONSIVE ---------- */
 @media (min-width: 769px) {
-  .nav-centered { display: flex; }
-  .nav-dots,
+  .nav-dots { display: none; }
   .nav-dropdown { display: none; }
 }
-header {
-  position: relative;
-}
+
 @media (max-width: 768px) {
-  header nav {
-    display: none !important;
-  }
-}
-@media (max-width: 768px) {
-  #nav-toggle {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-  }
+  .nav-dots { display: flex; }
 }
   </style>
 </head>
@@ -563,13 +547,28 @@ header {
 <script>const toggle = document.getElementById('nav-toggle');
 const menu = document.getElementById('nav-menu');
 
-toggle?.addEventListener('click', () => menu.classList.toggle('open'));
+// Abrir/cerrar menú al hacer clic en botón
+toggle.addEventListener('click', (e) => {
+  e.stopPropagation();
+  menu.classList.toggle('open');
+  toggle.classList.toggle('open');
+});
 
-// Cerrar al hacer clic fuera
-document.addEventListener('click', e => {
-  if (!e.target.closest('#nav-toggle') && !e.target.closest('#nav-menu')) {
+// Cerrar menú al hacer clic en un enlace
+document.querySelectorAll('#nav-menu a').forEach(link => {
+  link.addEventListener('click', () => {
     menu.classList.remove('open');
+    toggle.classList.remove('open');
+  });
+});
+
+// Cerrar menú al hacer clic fuera
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('header')) {
+    menu.classList.remove('open');
+    toggle.classList.remove('open');
   }
-});</script>
+});
+</script>
 </body>
 </html>
