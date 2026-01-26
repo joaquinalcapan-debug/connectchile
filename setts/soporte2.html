@@ -587,12 +587,15 @@
     });
   });</script>
   <script>
-  const toggle = document.getElementById("nav-toggle");
-  const menu = document.getElementById("nav-menu");
-
-  // Abrir/cerrar menú al hacer clic en botón
-  toggle.addEventListener("click", (e) => {
-    e.stopPropagation();
+  const toggle = document.getElementById('nav-toggle');
+  const menu   = document.getElementById('nav-menu');
+  toggle?.addEventListener('click', () => {
+    const open = menu.style.opacity==1;
+    menu.style.opacity   = open ? 0 : 1;
+    menu.style.transform = open ? 'translateY(-10px)' : 'translateY(0)';
+    menu.style.pointerEvents = open ? 'none' : 'auto';
+  });
+</script>
     menu.classList.toggle("open");
     toggle.classList.toggle("open");
   });

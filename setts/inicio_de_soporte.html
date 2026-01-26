@@ -578,13 +578,11 @@ header {
 <script>const toggle = document.getElementById('nav-toggle');
 const menu = document.getElementById('nav-menu');
 
-toggle?.addEventListener('click', () => menu.classList.toggle('open'));
-
-// Cerrar al hacer clic fuera
-document.addEventListener('click', e => {
-  if (!e.target.closest('#nav-toggle') && !e.target.closest('#nav-menu')) {
-    menu.classList.remove('open');
-  }
+toggle?.addEventListener('click', () => {
+  const open = menu.style.opacity==1;
+  menu.style.opacity   = open ? 0 : 1;
+  menu.style.transform = open ? 'translateY(-10px)' : 'translateY(0)';
+  menu.style.pointerEvents = open ? 'none' : 'auto';
 });</script>
 </body>
 </html>
