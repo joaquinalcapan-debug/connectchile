@@ -37,7 +37,7 @@
     header {
       background: var(--negro);
       color: #fff;
-      padding: 0.5rem 1rem;
+      padding: 0.8rem 1.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -51,12 +51,30 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      width: 100%;
+      width: auto;
       order: 1;
     }
 
     .logo img {
-      height: 40px;
+      height: 45px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-centered {
+        display: none;
+      }
+      .header-right {
+        display: flex;
+      }
+    }
+    
+    @media (min-width: 769px) {
+      .nav-centered {
+        display: flex;
+      }
+      .header-right {
+        display: flex;
+      }
     }
 
     .header-buttons {
@@ -107,42 +125,85 @@
       font-weight: 600;
       transition: color 0.3s;
       white-space: nowrap;
-      font-size: 0.75rem;
+      font-size: 0.9rem;
     }
 
     .nav-centered a:hover {
       color: var(--rojo);
     }
-    
-    @media (max-width: 768px) {
-      .nav-centered {
-        display: none;
-      }
-      .header-buttons {
-        display: none;
-      }
-    }
-    
-    @media (min-width: 769px) {
-      .nav-centered {
-        display: flex;
-      }
-      .header-buttons {
-        display: flex;
-      }
-    }
-    
-    nav ul {
+
+    .header-right {
       display: flex;
       align-items: center;
-      justify-content: flex-end;
-      gap: 1.2rem;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-    nav ul li:last-child {
+      gap: 1rem;
       margin-left: auto;
+    }
+
+    .nav-dots {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      padding: 0.5rem;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-dots:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-dots span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background-color: var(--blanco);
+      border-radius: 2px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .nav-dots.open span:nth-child(1) {
+      transform: rotate(45deg) translate(10px, 10px);
+    }
+
+    .nav-dots.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-dots.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(10px, -10px);
+    }
+
+    .header-buttons {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 0.95rem;
+      color: var(--blanco);
+    }
+
+    .header-buttons .btn-sm {
+      padding: 0.5rem 0.9rem;
+      font-size: 0.9rem;
+      background-color: var(--rojo);
+      color: var(--blanco);
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.3s ease;
+      font-weight: 600;
+    }
+
+    .header-buttons .btn-sm:hover {
+      background-color: #c82333;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(230, 57, 70, 0.4);
     }
 
     .hero {
@@ -791,7 +852,7 @@ html {
 </head>
 <body>
 
-<header >
+<header>
   <div class="header-top">
     <a href="inicio2.html" class="logo">
       <img src="https://i0.wp.com/connectchile.cl/wp-content/uploads/2019/11/cropped-logoconnectchileOK.png" alt="Connect Chile">
@@ -809,17 +870,20 @@ html {
     <a href="inicio_de_cobertura.html">Cobertura</a>
   </nav>
 
-  <!-- BOTÓN HAMBURGUESA (3 líneas) -->
-  <button id="nav-toggle" class="nav-dots" aria-label="Menú">
-    <span></span><span></span><span></span>
-  </button>
+  <!-- ESQUINA DERECHA: Hamburguesa + Acceso clientes -->
+  <div class="header-right">
+    <!-- BOTÓN HAMBURGUESA (3 líneas) -->
+    <button id="nav-toggle" class="nav-dots" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
 
-  <!-- Acceso clientes (esquina derecha abajo) -->
-  <div class="header-buttons">
-    <span>Acceso clientes:</span>
-    <a href="cliente.html" target="_blank" class="btn btn-sm">
-      <i class="fas fa-credit-card"></i> Paga tu cuenta aquí
-    </a>
+    <!-- Acceso clientes -->
+    <div class="header-buttons">
+      <span>Acceso clientes:</span>
+      <a href="cliente.html" target="_blank" class="btn btn-sm">
+        <i class="fas fa-credit-card"></i> Paga tu cuenta aquí
+      </a>
+    </div>
   </div>
 
   <!-- Menú desplegable (solo móvil) -->

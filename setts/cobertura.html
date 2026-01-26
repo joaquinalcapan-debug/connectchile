@@ -19,16 +19,23 @@
     }
     *{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',Roboto,sans-serif;letter-spacing:.2px}
     body{background:linear-gradient(135deg,#e24b57 0%,#1d3557 100%);color:var(--azul);line-height:1.6}
-    header{background:var(--negro);color:var(--blanco);padding:0.5rem 1rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;position:relative;z-index:100;gap:0.5rem}
+    header{background:var(--negro);color:var(--blanco);padding:0.8rem 1.5rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;position:relative;z-index:100;gap:0.5rem}
     .header-top{display:flex;align-items:center;order:1}
     .logo{display:flex;align-items:center}
-    header img{height:40px;padding:4px;background:rgba(255,255,255,.9);border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.15);transition:transform .3s ease}
+    header img{height:45px;padding:4px;background:rgba(255,255,255,.9);border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.15);transition:transform .3s ease}
     header img:hover{transform:scale(1.05)}
-    .nav-centered{order:2;flex:1;display:flex;gap:0.3rem;padding:0;white-space:nowrap;overflow-x:auto;font-size:0.75rem}
-    .header-buttons{display:flex;align-items:center;gap:0.5rem;font-size:0.8rem;order:4;flex-basis:100%;margin-left:auto;padding-right:0;color:var(--blanco)}
-    .header-buttons .btn-sm{padding:0.3rem 0.6rem;font-size:0.75rem;background-color:var(--rojo);color:var(--blanco);border:none;border-radius:4px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.3rem;transition:all .3s ease}
-    .header-buttons .btn-sm:hover{background-color:#c82333;transform:scale(1.05)}
-    nav a{color:var(--blanco);margin:0;text-decoration:none;font-weight:600;transition:color .3s;font-size:0.75rem;white-space:nowrap;padding:0.5rem 0.4rem}
+    .nav-centered{order:2;flex:1;display:flex;gap:0.8rem;padding:0;white-space:nowrap;overflow-x:auto;font-size:0.9rem}
+    .header-right{display:flex;align-items:center;gap:1rem;margin-left:auto}
+    .nav-dots{background:none;border:none;cursor:pointer;display:flex;flex-direction:column;gap:0.35rem;padding:0.5rem;border-radius:6px;transition:all 0.3s ease}
+    .nav-dots:hover{background-color:rgba(255,255,255,0.1)}
+    .nav-dots span{display:block;width:25px;height:3px;background-color:var(--blanco);border-radius:2px;transition:all 0.3s cubic-bezier(0.4,0,0.2,1)}
+    .nav-dots.open span:nth-child(1){transform:rotate(45deg) translate(10px,10px)}
+    .nav-dots.open span:nth-child(2){opacity:0}
+    .nav-dots.open span:nth-child(3){transform:rotate(-45deg) translate(10px,-10px)}
+    .header-buttons{display:flex;align-items:center;gap:0.7rem;font-size:0.95rem;color:var(--blanco)}
+    .header-buttons .btn-sm{padding:0.5rem 0.9rem;font-size:0.9rem;background-color:var(--rojo);color:var(--blanco);border:none;border-radius:6px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;transition:all 0.3s ease;font-weight:600}
+    .header-buttons .btn-sm:hover{background-color:#c82333;transform:translateY(-2px);box-shadow:0 4px 12px rgba(230,57,70,0.4)}
+    nav a{color:var(--blanco);margin:0;text-decoration:none;font-weight:600;transition:color .3s;font-size:0.9rem;white-space:nowrap;padding:0.5rem 0.4rem}
     nav a:hover{color:var(--rojo)}
     .cobertura{padding:5rem 1rem;background:transparent;color:var(--blanco);text-align:justify}
     .cobertura .container{max-width:800px;margin:0 auto}
@@ -116,17 +123,20 @@ header {position:relative}
       <a href="inicio_de_cobertura.html">Cobertura</a>
     </nav>
 
-    <!-- BOTÓN HAMBURGUESA (3 líneas) -->
-    <button id="nav-toggle" class="nav-dots" aria-label="Menú">
-      <span></span><span></span><span></span>
-    </button>
+    <!-- ESQUINA DERECHA: Hamburguesa + Acceso clientes -->
+    <div class="header-right">
+      <!-- BOTÓN HAMBURGUESA (3 líneas) -->
+      <button id="nav-toggle" class="nav-dots" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
 
-    <!-- Acceso clientes (esquina derecha abajo) -->
-    <div class="header-buttons">
-      <span>Acceso clientes:</span>
-      <a href="cliente.html" target="_blank" class="btn btn-sm">
-        <i class="fas fa-credit-card"></i> Paga tu cuenta aquí
-      </a>
+      <!-- Acceso clientes -->
+      <div class="header-buttons">
+        <span>Acceso clientes:</span>
+        <a href="cliente.html" target="_blank" class="btn btn-sm">
+          <i class="fas fa-credit-card"></i> Paga tu cuenta aquí
+        </a>
+      </div>
     </div>
 
     <!-- Menú móvil -->
