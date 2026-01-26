@@ -353,24 +353,53 @@ header {
 
 /* ========== 3 PUNTITOS BLANCOS ========== */
 #nav-toggle {
-  display: none;
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 50%;
+  right: 2rem;
+  transform: translateY(-50%);
   background: none;
   border: none;
   cursor: pointer;
   z-index: 200;
+  padding: 0.5rem;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.3s ease;
+  border-radius: 6px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#nav-toggle:hover {
+  background: rgba(230, 57, 70, 0.2);
+  transform: translateY(-50%) scale(1.1);
 }
 
 #nav-toggle span {
   display: block;
-  width: 5px;
-  height: 5px;
-  margin: 3px 0;
+  width: 24px;
+  height: 3px;
   background: #fff;
-  border-radius: 50%;
-  transition: 0.3s;
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#nav-toggle.open span:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+#nav-toggle.open span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+#nav-toggle.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
 }
 
 /* ========== DESPLEGABLE MÓVIL ========== */
@@ -412,7 +441,10 @@ header {
 /* ========== MOSTRAR/OCULTAR EN MÓVIL ========== */
 @media (max-width: 768px) {
   .nav-centered { display: none !important; }
-  #nav-toggle   { display: block !important; }
+  #nav-toggle { 
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
 }
 </style>
 </head>
