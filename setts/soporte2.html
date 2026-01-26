@@ -264,6 +264,65 @@
 .caer-activa {
   animation: caerSuave 0.9s ease-out forwards;
 }
+header {
+  position: relative;
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Botón 3 puntos */
+.nav-dots {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-dots span {
+  display: block;
+  width: 5px;
+  height: 5px;
+  margin: 3px 0;
+  background: #fff;
+  border-radius: 50%;
+}
+
+/* Menú desplegable */
+.nav-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 1.5rem;
+  width: 100%;
+  max-width: 320px;
+  background: #000;
+  transform: translateY(-10px);
+  opacity: 0;
+  pointer-events: none;
+  transition: .3s;
+  z-index: 900;
+}
+
+.nav-dropdown.open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-centered { display: none; }
+  .nav-dots { display: block; }
+}
+
+@media (min-width: 769px) {
+  .nav-dots,
+  .nav-dropdown { display: none; }
+}
+
   </style>
 </head>
 <body>
@@ -271,19 +330,38 @@
  <header>
   <div class="header-top">
     <a href="inicio2.html" class="logo">
-      <img src="https://i0.wp.com/connectchile.cl/wp-content/uploads/2019/11/cropped-logoconnectchileOK.png" alt="Connect Chile">
+      <img src="https://i0.wp.com/connectchile.cl/wp-content/uploads/2019/11/cropped-logoconnectchileOK.png">
     </a>
+
+    <!-- BOTÓN 3 PUNTITOS -->
+    <button id="nav-toggle" class="nav-dots" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
   </div>
-<nav>
-  <a href="inicio2.html">Inicio</a>
-  <a href="inicio2.html#planes">Planes</a>
-  <a href="inicio2.html#tecnologia">Tecnología</a>
-  <a href="inicio2.html#Información">Información</a>
-  <a href="inicio_de_factibilidad.html">Solicitar Factibilidad</a>
-  <a href="inicio_de_soporte.html">Soporte</a>
-  <a href="inicio_de_cobertura.html">Cobertura</a>
-</nav>
-  </header>
+
+  <!-- Menú desktop -->
+  <nav class="nav-centered">
+    <a href="inicio2.html">Inicio</a>
+    <a href="inicio2.html#planes">Planes</a>
+    <a href="inicio2.html#tecnologia">Tecnología</a>
+    <a href="inicio2.html#Información">Información</a>
+    <a href="inicio_de_factibilidad.html">Solicitar Factibilidad</a>
+    <a href="inicio_de_soporte.html">Soporte</a>
+    <a href="inicio_de_cobertura.html">Cobertura</a>
+  </nav>
+
+  <!-- Menú móvil -->
+  <ul id="nav-menu" class="nav-dropdown">
+    <a href="inicio2.html">Inicio</a>
+    <a href="inicio2.html#planes">Planes</a>
+    <a href="inicio2.html#tecnologia">Tecnología</a>
+    <a href="inicio2.html#Información">Información</a>
+    <a href="inicio_de_factibilidad.html">Solicitar Factibilidad</a>
+    <a href="inicio_de_soporte.html">Soporte</a>
+    <a href="inicio_de_cobertura.html">Cobertura</a>
+  </ul>
+</header>
+
 
   <!-- FORMULARIO -->
   <section class="form-section">
@@ -379,5 +457,14 @@
       }, 400);
     });
   });</script>
+  <script>
+  const toggle = document.getElementById("nav-toggle");
+  const menu = document.getElementById("nav-menu");
+
+  toggle.addEventListener("click", () => {
+    menu.classList.toggle("open");
+  });
+</script>
+
 </body>
 </html>
