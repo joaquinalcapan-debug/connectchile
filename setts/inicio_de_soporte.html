@@ -443,15 +443,15 @@ header {
     <a href="inicio_de_cobertura.html" style="color:#fff; text-decoration:none; font-weight:600;">Cobertura</a>
   </nav>
 
-  <!-- Botón 3 puntitos (móvil) -->
-  <button id="nav-toggle" aria-label="Menú" style="display:none; position:absolute; top:1rem; right:1rem; background:none; border:none; cursor:pointer;">
-    <span style="display:block; width:5px; height:5px; margin:3px 0; background:#fff; border-radius:50%;"></span>
-    <span style="display:block; width:5px; height:5px; margin:3px 0; background:#fff; border-radius:50%;"></span>
-    <span style="display:block; width:5px; height:5px; margin:3px 0; background:#fff; border-radius:50%;"></span>
+  <!-- Botón 3 puntitos (móvil) - Esquina inferior derecha -->
+  <button id="nav-toggle" aria-label="Menú" style="display:none; position:fixed; bottom:1rem; right:1rem; background:var(--rojo); border:none; cursor:pointer; width:50px; height:50px; border-radius:50%; box-shadow:0 4px 12px rgba(0,0,0,0.3); z-index:999; padding:0;">
+    <span style="display:block; width:4px; height:4px; margin:6px auto; background:#fff; border-radius:50%;"></span>
+    <span style="display:block; width:4px; height:4px; margin:6px auto; background:#fff; border-radius:50%;"></span>
+    <span style="display:block; width:4px; height:4px; margin:6px auto; background:#fff; border-radius:50%;"></span>
   </button>
 
   <!-- Menú desplegable móvil -->
-  <ul id="nav-menu" style="display:none; position:absolute; top:100%; right:1rem; width:220px; background:#000; transform:translateY(-10px); opacity:0; pointer-events:none; transition:.3s; z-index:900; list-style:none; padding:0; margin:0;">
+  <ul id="nav-menu" style="display:none; position:fixed; bottom:5rem; right:1rem; width:220px; background:#000; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.3); opacity:0; pointer-events:none; transition:.3s; z-index:998; list-style:none; padding:0; margin:0;">
     <li><a href="inicio2.html" style="display:block; padding:1rem; color:#fff; text-decoration:none;">Inicio</a></li>
     <li><a href="inicio2.html#planes" style="display:block; padding:1rem; color:#fff; text-decoration:none;">Planes</a></li>
     <li><a href="inicio2.html#tecnologia" style="display:block; padding:1rem; color:#fff; text-decoration:none;">Tecnología</a></li>
