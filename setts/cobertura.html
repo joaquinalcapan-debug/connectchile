@@ -62,13 +62,8 @@
     footer a{color:var(--blanco);text-decoration:none}footer a:hover{text-decoration:underline}
     @keyframes caerSuave{from{opacity:0;transform:translateY(-60px)}to{opacity:1;transform:translateY(0)}}
     .caer-activa{animation:caerSuave .9s ease-out forwards}
-    @media (max-width: 768px) {
-      #desktop-nav { display: none !important; }
-      #nav-toggle { display: block !important; }
-      #nav-menu[data-visible="true"] { opacity: 1 !important; pointer-events: auto !important; }
-    }
 
-    /* ========== HEADER POSICIONADO ========== */
+    /* ========== HEADER REFACTORIZADO ========== */
     header {
       position: relative;
       width: 100%;
@@ -76,52 +71,118 @@
       color: #fff;
       padding: 1.5rem 2rem;
     }
-
+    
     .header-top {
       display: flex;
+      justify-content: space-between;
       align-items: center;
+      gap: 2rem;
+      margin-bottom: 0.5rem;
     }
-
-    .logo img {
+    
+    .header-top .logo img {
       height: 50px;
+      padding: 8px;
+      background: rgba(255,255,255,.9);
+      border-radius: 10px;
+      transition: transform .3s;
     }
-
+    
+    .header-top .logo img:hover {
+      transform: scale(1.05);
+    }
+    
+    .header-access {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+    }
+    
+    .header-access .btn-sm {
+      padding: 0.4rem 0.8rem;
+      background: var(--rojo);
+      color: #fff;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: background .3s;
+    }
+    
+    .header-access .btn-sm:hover {
+      background: var(--negro);
+    }
+    
     .nav-centered {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       gap: 1.2rem;
-      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
     }
-
+    
     .nav-centered a {
       color: #fff;
       text-decoration: none;
       font-weight: 600;
+      transition: color .3s;
     }
-
+    
+    .nav-centered a:hover {
+      color: var(--rojo);
+    }
+    
     /* ========== 3 PUNTITOS BLANCOS ========== */
     #nav-toggle {
-      display: none;
       position: absolute;
-      top: 1rem;
-      right: 1rem;
+      top: 50%;
+      right: 2rem;
+      transform: translateY(-50%);
       background: none;
       border: none;
       cursor: pointer;
       z-index: 200;
+      padding: 0.5rem;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.3s ease;
+      border-radius: 6px;
+      opacity: 0;
+      pointer-events: none;
     }
-
+    
+    #nav-toggle:hover {
+      background: rgba(230, 57, 70, 0.2);
+      transform: translateY(-50%) scale(1.1);
+    }
+    
     #nav-toggle span {
       display: block;
-      width: 5px;
-      height: 5px;
-      margin: 3px 0;
+      width: 24px;
+      height: 3px;
       background: #fff;
-      border-radius: 50%;
-      transition: 0.3s;
+      border-radius: 2px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
-
+    
+    #nav-toggle.open span:nth-child(1) {
+      transform: rotate(45deg) translate(8px, 8px);
+    }
+    
+    #nav-toggle.open span:nth-child(2) {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+    
+    #nav-toggle.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -6px);
+    }
+    
     /* ========== DESPLEGABLE MÓVIL ========== */
     #nav-menu {
       position: absolute;
@@ -138,13 +199,13 @@
       transition: 0.3s ease;
       z-index: 900;
     }
-
+    
     #nav-menu.open {
       transform: translateY(0);
       opacity: 1;
       pointer-events: auto;
     }
-
+    
     #nav-menu a {
       display: block;
       padding: 1rem;
@@ -152,16 +213,20 @@
       font-weight: 600;
       text-decoration: none;
       border-bottom: 1px solid #222;
+      transition: background .3s;
     }
-
+    
     #nav-menu a:hover {
-      background: #ff0000;
+      background: var(--rojo);
     }
-
+    
     /* ========== MOSTRAR/OCULTAR EN MÓVIL ========== */
     @media (max-width: 768px) {
       .nav-centered { display: none !important; }
-      #nav-toggle   { display: block !important; }
+      #nav-toggle { 
+        opacity: 1 !important;
+        pointer-events: auto !important;
+      }
     }
   </style>
 </head>
@@ -172,7 +237,7 @@
     <a href="inicio2.html" class="logo">
       <img src="https://i0.wp.com/connectchile.cl/wp-content/uploads/2019/11/cropped-logoconnectchileOK.png" alt="Connect Chile">
     </a>
-  </div>
+
   
   <nav class="nav-centered">
     <a href="inicio2.html">Inicio</a>
@@ -184,12 +249,10 @@
     <a href="inicio_de_cobertura.html">Cobertura</a>
   </nav>
 
-  <!-- 3 PUNTITOS -->
   <button id="nav-toggle" aria-label="Menú">
     <span></span><span></span><span></span>
   </button>
 
-  <!-- DESPLEGABLE -->
   <ul id="nav-menu">
     <li><a href="inicio2.html">Inicio</a></li>
     <li><a href="inicio2.html#planes">Planes</a></li>
@@ -233,7 +296,20 @@
   <p><a href="https://www.australlab.cl" target="_blank">Powered by Austral LAB</a></p>
 </footer>
 
-
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const menu   = document.getElementById('nav-menu');
+  toggle?.addEventListener('click', () => menu.classList.toggle('open'));
+  document.addEventListener('click', e => {
+    if (!e.target.closest('#nav-toggle') && !e.target.closest('#nav-menu')) {
+      menu.classList.remove('open');
+    }
+  });
+</script>
+  
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+  /* ---------- INICIALIZAR MAPA ---------- */
   const map = L.map('map').setView([-39.55, -72.03], 10);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; OpenStreetMap contributors'
@@ -251,7 +327,6 @@
   }).addTo(map).bindPopup("<b>¡Zona con cobertura Connect Chile!</b><br>Consulta disponibilidad en tu domicilio.");
   map.fitBounds(coverageZone.getBounds().pad(0.15));
 </script>
-
 <script>
   /* ---------- BÚSQUEDA + TEST COBERTURA ---------- */
   const searchInput = document.getElementById('searchInput');
@@ -305,33 +380,6 @@
     }
     return inside;
   }
-
-  // Manejo del menú móvil
-  const toggle = document.getElementById('nav-toggle');
-  const menu = document.getElementById('nav-menu');
-  const links = menu.querySelectorAll('a');
-
-  toggle?.addEventListener('click', () => {
-    const isVisible = menu.getAttribute('data-visible') === 'true';
-    menu.setAttribute('data-visible', !isVisible);
-  });
-
-  // Cerrar menú al hacer clic en un enlace
-  links.forEach(link => {
-    link.addEventListener('click', () => {
-      menu.setAttribute('data-visible', 'false');
-    });
-  });
-</script>
-<script>
-  const toggle = document.getElementById('nav-toggle');
-  const menu   = document.getElementById('nav-menu');
-  toggle?.addEventListener('click', () => menu.classList.toggle('open'));
-  document.addEventListener('click', e => {
-    if (!e.target.closest('#nav-toggle') && !e.target.closest('#nav-menu')) {
-      menu.classList.remove('open');
-    }
-  });
 </script>
 </body>
 </html>

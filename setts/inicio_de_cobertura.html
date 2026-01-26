@@ -347,6 +347,7 @@ header {
   .nav-centered { display: none !important; }
   #nav-toggle   { display: block !important; }
 }
+</style>
 </head>
 
 <body>
@@ -436,15 +437,5 @@ links.forEach(link => {
     menu.setAttribute('data-visible', 'false');
   });
 });</script>
-<script>
-  const toggle = document.getElementById('nav-toggle');
-  const menu   = document.getElementById('nav-menu');
-  toggle?.addEventListener('click', () => menu.classList.toggle('open'));
-  document.addEventListener('click', e => {
-    if (!e.target.closest('#nav-toggle') && !e.target.closest('#nav-menu')) {
-      menu.classList.remove('open');
-    }
-  });
-</script>
 </body>
 </html>
