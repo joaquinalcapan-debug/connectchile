@@ -67,45 +67,137 @@
       #nav-toggle { display: block !important; }
       #nav-menu[data-visible="true"] { opacity: 1 !important; pointer-events: auto !important; }
     }
+
+    /* ========== HEADER POSICIONADO ========== */
+    header {
+      position: relative;
+      width: 100%;
+      background: var(--negro);
+      color: #fff;
+      padding: 1.5rem 2rem;
+    }
+
+    .header-top {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    .nav-centered {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin-top: 0.5rem;
+    }
+
+    .nav-centered a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* ========== 3 PUNTITOS BLANCOS ========== */
+    #nav-toggle {
+      display: none;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 200;
+    }
+
+    #nav-toggle span {
+      display: block;
+      width: 5px;
+      height: 5px;
+      margin: 3px 0;
+      background: #fff;
+      border-radius: 50%;
+      transition: 0.3s;
+    }
+
+    /* ========== DESPLEGABLE MÓVIL ========== */
+    #nav-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      width: 220px;
+      background: #000;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      transform: translateY(-10px);
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.3s ease;
+      z-index: 900;
+    }
+
+    #nav-menu.open {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    #nav-menu a {
+      display: block;
+      padding: 1rem;
+      color: #fff;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid #222;
+    }
+
+    #nav-menu a:hover {
+      background: #ff0000;
+    }
+
+    /* ========== MOSTRAR/OCULTAR EN MÓVIL ========== */
+    @media (max-width: 768px) {
+      .nav-centered { display: none !important; }
+      #nav-toggle   { display: block !important; }
+    }
   </style>
 </head>
 
 <body>
-<header style="background:var(--negro); color:#fff; padding:1rem 2rem; position:relative;">
-  <!-- LÍNEA SUPERIOR -->
-  <div style="display:flex; justify-content:space-between; align-items:center;">
-    <!-- Logo arriba-izquierda -->
+<header>
+  <div class="header-top">
     <a href="inicio2.html" class="logo">
-      <img src="https://i0.wp.com/connectchile.cl/wp-content/uploads/2019/11/cropped-logoconnectchileOK.png" alt="Connect Chile" style="height:50px; padding:8px; background:rgba(255,255,255,.9); border-radius:10px;">
+      <img src="https://i0.wp.com/connectchile.cl/wp-content/uploads/2019/11/cropped-logoconnectchileOK.png" alt="Connect Chile">
     </a>
-    <!-- Botón 3 puntitos (móvil) -->
-    <button id="nav-toggle" aria-label="Menú" style="display:none; background:var(--rojo); border:none; cursor:pointer; width:50px; height:50px; border-radius:50%; box-shadow:0 4px 12px rgba(0,0,0,0.3); padding:0;">
-      <span style="display:block; width:4px; height:4px; margin:6px auto; background:#fff; border-radius:50%;"></span>
-      <span style="display:block; width:4px; height:4px; margin:6px auto; background:#fff; border-radius:50%;"></span>
-      <span style="display:block; width:4px; height:4px; margin:6px auto; background:#fff; border-radius:50%;"></span>
-    </button>
   </div>
-
-  <!-- LÍNEA INFERIOR: menú centrado (solo desktop) -->
-  <nav id="desktop-nav" style="display:flex; justify-content:center; flex-wrap:wrap; gap:1.2rem; margin-top:.5rem;">
-    <a href="inicio2.html" style="color:#fff; text-decoration:none; font-weight:600;">Inicio</a>
-    <a href="inicio2.html#planes" style="color:#fff; text-decoration:none; font-weight:600;">Planes</a>
-    <a href="inicio2.html#tecnologia" style="color:#fff; text-decoration:none; font-weight:600;">Tecnología</a>
-    <a href="inicio2.html#Información" style="color:#fff; text-decoration:none; font-weight:600;">Información</a>
-    <a href="inicio_de_factibilidad.html" style="color:#fff; text-decoration:none; font-weight:600;">Solicitar Factibilidad</a>
-    <a href="inicio_de_soporte.html" style="color:#fff; text-decoration:none; font-weight:600;">Soporte</a>
-    <a href="inicio_de_cobertura.html" style="color:#fff; text-decoration:none; font-weight:600;">Cobertura</a>
+  
+  <nav class="nav-centered">
+    <a href="inicio2.html">Inicio</a>
+    <a href="inicio2.html#planes">Planes</a>
+    <a href="inicio2.html#tecnologia">Tecnología</a>
+    <a href="inicio2.html#Información">Información</a>
+    <a href="inicio_de_factibilidad.html">Solicitar Factibilidad</a>
+    <a href="inicio_de_soporte.html">Soporte</a>
+    <a href="inicio_de_cobertura.html">Cobertura</a>
   </nav>
 
-  <!-- Menú desplegable móvil -->
-  <ul id="nav-menu" style="display:none; position:absolute; top:100%; right:1rem; width:220px; background:#000; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.3); opacity:0; pointer-events:none; transition:.3s; z-index:998; list-style:none; padding:0; margin:1rem 0 0 0;">
-    <li><a href="inicio2.html" style="display:block; padding:1rem; color:#fff; text-decoration:none;">Inicio</a></li>
-    <li><a href="inicio2.html#planes" style="display:block; padding:1rem; color:#fff; text-decoration:none;">Planes</a></li>
-    <li><a href="inicio2.html#tecnologia" style="display:block; padding:1rem; color:#fff; text-decoration:none;">Tecnología</a></li>
-    <li><a href="inicio2.html#Información" style="display:block; padding:1rem; color:#fff; text-decoration:none;">Información</a></li>
-    <li><a href="inicio_de_factibilidad.html" style="display:block; padding:1rem; color:#fff; text-decoration:none;">Solicitar Factibilidad</a></li>
-    <li><a href="inicio_de_soporte.html" style="display:block; padding:1rem; color:#fff; text-decoration:none;">Soporte</a></li>
-    <li><a href="inicio_de_cobertura.html" style="display:block; padding:1rem; color:#fff; text-decoration:none;">Cobertura</a></li>
+  <!-- 3 PUNTITOS -->
+  <button id="nav-toggle" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+
+  <!-- DESPLEGABLE -->
+  <ul id="nav-menu">
+    <li><a href="inicio2.html">Inicio</a></li>
+    <li><a href="inicio2.html#planes">Planes</a></li>
+    <li><a href="inicio2.html#tecnologia">Tecnología</a></li>
+    <li><a href="inicio2.html#Información">Información</a></li>
+    <li><a href="inicio_de_factibilidad.html">Solicitar Factibilidad</a></li>
+    <li><a href="inicio_de_soporte.html">Soporte</a></li>
+    <li><a href="inicio_de_cobertura.html">Cobertura</a></li>
   </ul>
 </header>
 
@@ -229,6 +321,16 @@
     link.addEventListener('click', () => {
       menu.setAttribute('data-visible', 'false');
     });
+  });
+</script>
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const menu   = document.getElementById('nav-menu');
+  toggle?.addEventListener('click', () => menu.classList.toggle('open'));
+  document.addEventListener('click', e => {
+    if (!e.target.closest('#nav-toggle') && !e.target.closest('#nav-menu')) {
+      menu.classList.remove('open');
+    }
   });
 </script>
 </body>
