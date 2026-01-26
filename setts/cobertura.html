@@ -19,23 +19,10 @@
     }
     *{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',Roboto,sans-serif;letter-spacing:.2px}
     body{background:linear-gradient(135deg,#e24b57 0%,#1d3557 100%);color:var(--azul);line-height:1.6}
-    header{background:var(--negro);color:var(--blanco);padding:0.8rem 1.5rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;position:relative;z-index:100;gap:0.5rem}
-    .header-top{display:flex;align-items:center;order:1}
-    .logo{display:flex;align-items:center}
-    header img{height:45px;padding:4px;background:rgba(255,255,255,.9);border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.15);transition:transform .3s ease}
+    header{background:var(--negro);color:var(--blanco);padding:2rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+    header img{height:50px;padding:8px;background:rgba(255,255,255,.9);border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,.15);transition:transform .3s}
     header img:hover{transform:scale(1.05)}
-    .nav-centered{order:2;flex:1;display:flex;gap:0.8rem;padding:0;white-space:nowrap;overflow-x:auto;font-size:0.9rem}
-    .header-right{display:flex;align-items:center;gap:1rem;margin-left:auto}
-    .nav-dots{background:none;border:none;cursor:pointer;display:flex;flex-direction:column;gap:0.35rem;padding:0.5rem;border-radius:6px;transition:all 0.3s ease}
-    .nav-dots:hover{background-color:rgba(255,255,255,0.1)}
-    .nav-dots span{display:block;width:25px;height:3px;background-color:var(--blanco);border-radius:2px;transition:all 0.3s cubic-bezier(0.4,0,0.2,1)}
-    .nav-dots.open span:nth-child(1){transform:rotate(45deg) translate(10px,10px)}
-    .nav-dots.open span:nth-child(2){opacity:0}
-    .nav-dots.open span:nth-child(3){transform:rotate(-45deg) translate(10px,-10px)}
-    .header-buttons{display:flex;align-items:center;gap:0.7rem;font-size:0.95rem;color:var(--blanco)}
-    .header-buttons .btn-sm{padding:0.5rem 0.9rem;font-size:0.9rem;background-color:var(--rojo);color:var(--blanco);border:none;border-radius:6px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;transition:all 0.3s ease;font-weight:600}
-    .header-buttons .btn-sm:hover{background-color:#c82333;transform:translateY(-2px);box-shadow:0 4px 12px rgba(230,57,70,0.4)}
-    nav a{color:var(--blanco);margin:0;text-decoration:none;font-weight:600;transition:color .3s;font-size:0.9rem;white-space:nowrap;padding:0.5rem 0.4rem}
+    nav a{color:var(--blanco);margin:0 1rem;text-decoration:none;font-weight:600;transition:color .3s}
     nav a:hover{color:var(--rojo)}
     .cobertura{padding:5rem 1rem;background:transparent;color:var(--blanco);text-align:justify}
     .cobertura .container{max-width:800px;margin:0 auto}
@@ -75,82 +62,18 @@
     footer a{color:var(--blanco);text-decoration:none}footer a:hover{text-decoration:underline}
     @keyframes caerSuave{from{opacity:0;transform:translateY(-60px)}to{opacity:1;transform:translateY(0)}}
     .caer-activa{animation:caerSuave .9s ease-out forwards}
-/* ---------- HEADER UNIFICADO ---------- */
-header {position:relative}
-
-.header-top {display:flex;align-items:center;justify-content:space-between;width:100%}
-
-/* ---------- BOTÓN HAMBURGUESA (3 LÍNEAS) ---------- */
-#nav-toggle {display:flex;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:.5rem;z-index:201;margin-left:auto}
-
-#nav-toggle span {display:block;width:25px;height:3px;background:#fff;border-radius:2px;transition:all .3s ease}
-
-#nav-toggle.open span:nth-child(1){transform:rotate(45deg) translate(8px, 8px)}
-#nav-toggle.open span:nth-child(2){opacity:0}
-#nav-toggle.open span:nth-child(3){transform:rotate(-45deg) translate(7px, -7px)}
-
-/* ---------- MENÚ DESPLEGABLE ---------- */
-#nav-menu {position:absolute;top:100%;left:0;right:0;width:100%;background:rgba(11,11,11,.98);list-style:none;margin:0;padding:0;max-height:0;overflow:hidden;opacity:0;pointer-events:none;transition:max-height .4s ease,opacity .3s ease;z-index:150;backdrop-filter:blur(10px)}
-
-#nav-menu.open {max-height:500px;opacity:1;pointer-events:auto}
-
-#nav-menu a {display:block;padding:1rem 2rem;color:#fff;text-decoration:none;font-weight:600;border-bottom:1px solid rgba(255,255,255,.1);transition:background-color .3s ease,color .3s ease}
-
-#nav-menu a:hover,#nav-menu a:active {background-color:var(--rojo);color:#fff}
-
-/* ---------- RESPONSIVE ---------- */
-@media (min-width:769px) {#nav-toggle {display:none} #nav-menu {display:none} nav {display:flex !important}}
-@media (max-width:768px) {.nav-centered {display:none} nav {display:none}}
   </style>
 </head>
 
 <body>
-  <header>
-    <div class="header-top">
-      <a href="inicio2.html" class="logo">
-        <img src="https://i0.wp.com/connectchile.cl/wp-content/uploads/2019/11/cropped-logoconnectchileOK.png" alt="Connect Chile">
-      </a>
-    </div>
-
-    <!-- Menú desktop -->
-    <nav class="nav-centered">
-      <a href="inicio2.html">Inicio</a>
-      <a href="inicio2.html#planes">Planes</a>
-      <a href="inicio2.html#tecnologia">Tecnología</a>
-      <a href="inicio2.html#Información">Información</a>
-      <a href="inicio_de_factibilidad.html">Solicitar Factibilidad</a>
-      <a href="inicio_de_soporte.html">Soporte</a>
-      <a href="inicio_de_cobertura.html">Cobertura</a>
-    </nav>
-
-    <!-- ESQUINA DERECHA: Hamburguesa + Acceso clientes -->
-    <div class="header-right">
-      <!-- BOTÓN HAMBURGUESA (3 líneas) -->
-      <button id="nav-toggle" class="nav-dots" aria-label="Menú">
-        <span></span><span></span><span></span>
-      </button>
-
-      <!-- Acceso clientes -->
-      <div class="header-buttons">
-        <span>Acceso clientes:</span>
-        <a href="cliente.html" target="_blank" class="btn btn-sm">
-          <i class="fas fa-credit-card"></i> Paga tu cuenta aquí
-        </a>
-      </div>
-    </div>
-
-    <!-- Menú móvil -->
-    <ul id="nav-menu" class="nav-dropdown">
-      <a href="inicio2.html">Inicio</a>
-      <a href="inicio2.html#planes">Planes</a>
-      <a href="inicio2.html#tecnologia">Tecnología</a>
-      <a href="inicio2.html#Información">Información</a>
-      <a href="inicio_de_factibilidad.html">Solicitar Factibilidad</a>
-      <a href="inicio_de_soporte.html">Soporte</a>
-      <a href="inicio_de_cobertura.html">Cobertura</a>
-    </ul>
-  </header>
-
+<header>
+  <a href="inicio2.html" class="logo"><img src="https://i0.wp.com/connectchile.cl/wp-content/uploads/2019/11/cropped-logoconnectchileOK.png" alt="Connect Chile"></a>
+  <nav>
+    <a href="inicio2.html">Inicio</a><a href="inicio2.html#planes">Planes</a><a href="inicio2.html#tecnologia">Tecnología</a>
+    <a href="inicio2.html#Información">Información</a><a href="inicio_de_factibilidad.html">Solicitar Factibilidad</a>
+    <a href="inicio_de_soporte.html">Soporte</a><a href="inicio_de_cobertura.html">Cobertura</a>
+  </nav>
+</header>
 
 <section class="cobertura">
   <div class="container">
@@ -259,33 +182,5 @@ header {position:relative}
     return inside;
   }
 </script>
-<script>
-  const toggle = document.getElementById("nav-toggle");
-  const menu = document.getElementById("nav-menu");
-
-  // Abrir/cerrar menú al hacer clic en botón
-  toggle.addEventListener("click", (e) => {
-    e.stopPropagation();
-    menu.classList.toggle("open");
-    toggle.classList.toggle("open");
-  });
-
-  // Cerrar menú al hacer clic en un enlace
-  document.querySelectorAll("#nav-menu a").forEach(link => {
-    link.addEventListener("click", () => {
-      menu.classList.remove("open");
-      toggle.classList.remove("open");
-    });
-  });
-
-  // Cerrar menú al hacer clic fuera
-  document.addEventListener("click", (e) => {
-    if (!e.target.closest("header")) {
-      menu.classList.remove("open");
-      toggle.classList.remove("open");
-    }
-  });
-</script>
-
 </body>
 </html>
