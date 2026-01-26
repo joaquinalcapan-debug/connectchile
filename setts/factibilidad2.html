@@ -335,7 +335,14 @@ header {
   .nav-centered { display: none; }
   #nav-toggle { display: block; }
 }
-
+@media (max-width: 768px) {
+  header nav { display: none !important; }
+  #nav-toggle {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+}
 </style>
 </head>
 <body>
@@ -344,10 +351,10 @@ header {
     <a href="inicio2.html" class="logo"> … </a>
   </div>
 
-  <!-- BOTÓN 3 PUNTITOS -->
-  <button id="nav-toggle" aria-label="Menú">
-    <span></span><span></span><span></span>
-  </button>
+   <!-- BOTÓN HAMBURGUESA (3 puntitos) -->
+<button id="nav-toggle" class="nav-dots" aria-label="Menú">
+  <span></span><span></span><span></span>
+</button>
 
   <!-- Menú desktop -->
   <nav class="nav-centered">
