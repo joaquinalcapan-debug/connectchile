@@ -76,16 +76,17 @@ header {
 }
 
 /* ---------- BOTÓN 3 PUNTOS ---------- */
-#nav-toggle {           /* id que ya usas */
+/* ---------- BOTÓN 3 PUNTOS (móvil) ---------- */
+#nav-toggle {
+  display: none;
   position: absolute;
-  top: 1rem;
+  top: 1.2rem;
   right: 2rem;
   background: none;
   border: none;
   cursor: pointer;
   z-index: 200;
 }
-
 #nav-toggle span {
   display: block;
   width: 5px;
@@ -94,6 +95,9 @@ header {
   background: #fff;
   border-radius: 50%;
   transition: 0.3s;
+}
+@media (max-width: 768px) {
+  #nav-toggle { display: block; }
 }
 
 /* ---------- MENÚ DESPLEGABLE ---------- */
@@ -131,17 +135,14 @@ header {
 </head>
 
 <body>
-<header>
   <div class="header-top">
-    <a href="inicio2.html" class="logo">
-      <img src="https://i0.wp.com/connectchile.cl/wp-content/uploads/2019/11/cropped-logoconnectchileOK.png">
-    </a>
-
-    <!-- BOTÓN 3 PUNTITOS -->
-    <button id="nav-toggle" class="nav-dots" aria-label="Menú">
-      <span></span><span></span><span></span>
-    </button>
+    <a href="inicio2.html" class="logo"> … </a>
   </div>
+
+  <!-- BOTÓN 3 PUNTITOS -->
+  <button id="nav-toggle" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
 
   <!-- Menú desktop -->
   <nav class="nav-centered">
