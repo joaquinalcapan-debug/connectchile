@@ -70,6 +70,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;          /* <-- importante */
 }
 
 /* Botón 3 puntos */
@@ -120,7 +121,11 @@
   .nav-dots,
   .nav-dropdown { display: none; }
 }
-
+#nav-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
   </style>
 </head>
 
