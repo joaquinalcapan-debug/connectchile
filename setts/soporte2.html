@@ -35,12 +35,23 @@
       color: var(--blanco);
       padding: 0.5rem 1rem;
       display: flex;
-      justify-content: space-between;
+      flex-wrap: wrap;
       align-items: center;
+      justify-content: space-between;
       position: relative;
       z-index: 100;
-      flex-wrap: nowrap;
       gap: 0.5rem;
+    }
+
+    .header-top {
+      display: flex;
+      align-items: center;
+      order: 1;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
     }
 
     header img {
@@ -56,14 +67,58 @@
       transform: scale(1.05);
     }
 
+    .nav-centered {
+      order: 2;
+      flex: 1;
+      display: flex;
+      gap: 0.3rem;
+      padding: 0;
+      white-space: nowrap;
+      overflow-x: auto;
+      font-size: 0.75rem;
+    }
+
+    .header-buttons {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      order: 4;
+      flex-basis: 100%;
+      margin-left: auto;
+      padding-right: 0;
+      color: var(--blanco);
+    }
+
+    .header-buttons .btn-sm {
+      padding: 0.3rem 0.6rem;
+      font-size: 0.75rem;
+      background-color: var(--rojo);
+      color: var(--blanco);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: all 0.3s ease;
+    }
+
+    .header-buttons .btn-sm:hover {
+      background-color: #c82333;
+      transform: scale(1.05);
+    }
+
     nav a {
       color: var(--blanco);
-      margin: 0 0.5rem;
+      margin: 0;
       text-decoration: none;
       font-weight: 600;
       transition: color 0.3s ease;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       white-space: nowrap;
+      padding: 0.5rem 0.4rem;
     }
 
     nav a:hover {
@@ -369,6 +424,14 @@
   <button id="nav-toggle" class="nav-dots" aria-label="Menú">
     <span></span><span></span><span></span>
   </button>
+
+  <!-- Acceso clientes (esquina derecha abajo) -->
+  <div class="header-buttons">
+    <span>Acceso clientes:</span>
+    <a href="cliente.html" target="_blank" class="btn btn-sm">
+      <i class="fas fa-credit-card"></i> Paga tu cuenta aquí
+    </a>
+  </div>
 
   <!-- Menú móvil -->
   <ul id="nav-menu" class="nav-dropdown">

@@ -37,14 +37,14 @@
     header {
       background: var(--negro);
       color: #fff;
-      padding: 1rem 2rem;
+      padding: 0.5rem 1rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: relative;
       z-index: 100;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 0.5rem;
     }
 
     .header-top {
@@ -52,32 +52,53 @@
       justify-content: space-between;
       align-items: center;
       width: 100%;
+      order: 1;
     }
 
     .logo img {
-      height: 50px;
+      height: 40px;
     }
 
     .header-buttons {
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
+      order: 4;
+      flex-basis: 100%;
       margin-left: auto;
+      padding-right: 0;
+      color: var(--blanco);
     }
 
     .header-buttons .btn-sm {
-      padding: 0.4rem 0.8rem;
-      font-size: 0.85rem;
+      padding: 0.3rem 0.6rem;
+      font-size: 0.75rem;
+      background-color: var(--rojo);
+      color: var(--blanco);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: all 0.3s ease;
+    }
+
+    .header-buttons .btn-sm:hover {
+      background-color: #c82333;
+      transform: scale(1.05);
     }
 
     .nav-centered {
       display: flex;
-      justify-content: center;
-      gap: 1.5rem;
+      justify-content: flex-start;
+      gap: 0.3rem;
       flex-wrap: nowrap;
-      padding: 0.5rem 0;
-      width: 100%;
+      padding: 0;
+      order: 2;
+      flex: 1;
     }
 
     .nav-centered a {
@@ -86,7 +107,7 @@
       font-weight: 600;
       transition: color 0.3s;
       white-space: nowrap;
-      font-size: 0.95rem;
+      font-size: 0.75rem;
     }
 
     .nav-centered a:hover {
@@ -775,47 +796,42 @@ html {
     <a href="inicio2.html" class="logo">
       <img src="https://i0.wp.com/connectchile.cl/wp-content/uploads/2019/11/cropped-logoconnectchileOK.png" alt="Connect Chile">
     </a>
-    <div class="header-buttons">
-      <span>Acceso clientes:</span>
-      <a href="cliente.html" target="_blank" class="btn btn-sm">
-  <i class="fas fa-credit-card"></i> Paga tu cuenta aquí
-</a>
   </div>
+  
   <!-- Menú horizontal (solo desktop) -->
-<nav class="nav-centered">
-  <a href="inicio2.html">Inicio</a>
-  <a href="inicio2.html#planes">Planes</a>
-  <a href="inicio2.html#tecnologia">Tecnología</a>
-  <a href="inicio2.html#Información">Información</a>
-  <a href="inicio_de_factibilidad.html">Solicitar Factibilidad</a>
-  <a href="inicio_de_soporte.html">Soporte</a>
-  <a href="inicio_de_cobertura.html">Cobertura</a>
-</nav>
-<!-- BOTÓN HAMBURGUESA (3 puntos) -->
-<button id="nav-toggle" class="nav-dots" aria-label="Menú">
-  <span></span><span></span><span></span>
-</button>
-<!-- Menú desplegable (solo móvil) -->
-<ul id="nav-menu" class="nav-dropdown">
-  <a href="inicio2.html">Inicio</a>
+  <nav class="nav-centered">
+    <a href="inicio2.html">Inicio</a>
+    <a href="inicio2.html#planes">Planes</a>
+    <a href="inicio2.html#tecnologia">Tecnología</a>
+    <a href="inicio2.html#Información">Información</a>
+    <a href="inicio_de_factibilidad.html">Solicitar Factibilidad</a>
+    <a href="inicio_de_soporte.html">Soporte</a>
+    <a href="inicio_de_cobertura.html">Cobertura</a>
+  </nav>
 
+  <!-- BOTÓN HAMBURGUESA (3 líneas) -->
+  <button id="nav-toggle" class="nav-dots" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
 
-    <a href="inicio2.html#planes" class="submenu-toggle">Planes</a>
- 
+  <!-- Acceso clientes (esquina derecha abajo) -->
+  <div class="header-buttons">
+    <span>Acceso clientes:</span>
+    <a href="cliente.html" target="_blank" class="btn btn-sm">
+      <i class="fas fa-credit-card"></i> Paga tu cuenta aquí
+    </a>
+  </div>
 
-
-    <a href="inicio2.html#tecnologia" class="submenu-toggle">Tecnología</a>
-
-
-
-
-    <a href="inicio2.html#Información" class="submenu-toggle">Información</a>
- 
-
-  <a href="inicio_de_factibilidad.html">Solicitar Factibilidad</a>
-  <a href="inicio_de_soporte.html">Soporte</a>
-  <a href="inicio_de_cobertura.html">Cobertura</a>
-</ul>
+  <!-- Menú desplegable (solo móvil) -->
+  <ul id="nav-menu" class="nav-dropdown">
+    <a href="inicio2.html">Inicio</a>
+    <a href="inicio2.html#planes">Planes</a>
+    <a href="inicio2.html#tecnologia">Tecnología</a>
+    <a href="inicio2.html#Información">Información</a>
+    <a href="inicio_de_factibilidad.html">Solicitar Factibilidad</a>
+    <a href="inicio_de_soporte.html">Soporte</a>
+    <a href="inicio_de_cobertura.html">Cobertura</a>
+  </ul>
 
 </header>
 
