@@ -141,16 +141,7 @@
   <p><a href="https://www.australlab.cl" target="_blank">Powered by Austral LAB</a></p>
 </footer>
 
-<script>
-  const toggle = document.getElementById('nav-toggle');
-  const menu   = document.getElementById('nav-menu');
-  toggle?.addEventListener('click', () => {
-    const open = menu.style.opacity==1;
-    menu.style.opacity   = open ? 0 : 1;
-    menu.style.transform = open ? 'translateY(-10px)' : 'translateY(0)';
-    menu.style.pointerEvents = open ? 'none' : 'auto';
-  });
-</script>
+
   const map = L.map('map').setView([-39.55, -72.03], 10);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; OpenStreetMap contributors'
