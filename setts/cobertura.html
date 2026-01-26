@@ -62,69 +62,70 @@
     footer a{color:var(--blanco);text-decoration:none}footer a:hover{text-decoration:underline}
     @keyframes caerSuave{from{opacity:0;transform:translateY(-60px)}to{opacity:1;transform:translateY(0)}}
     .caer-activa{animation:caerSuave .9s ease-out forwards}
-    header {
-  position: relative;
+/* ---------- HEADER UNIFICADO ---------- */
+header {
+  position: relative;   /* ← indispensable para que el botón se ancle aquí */
 }
 
 .header-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;          /* <-- importante */
+  width: 100%;          /* ← fuerza que ocupe todo el ancho */
+  padding: 1rem 2rem;   /* mismo relleno que en inicio2.html */
 }
 
-/* Botón 3 puntos */
-.nav-dots {
-  display: none;
+/* ---------- BOTÓN 3 PUNTOS ---------- */
+#nav-toggle {           /* id que ya usas */
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
   background: none;
   border: none;
   cursor: pointer;
+  z-index: 200;
 }
 
-.nav-dots span {
+#nav-toggle span {
   display: block;
   width: 5px;
   height: 5px;
   margin: 3px 0;
   background: #fff;
   border-radius: 50%;
+  transition: 0.3s;
 }
 
-/* Menú desplegable */
-.nav-dropdown {
+/* ---------- MENÚ DESPLEGABLE ---------- */
+#nav-menu {             /* id que ya usas */
   position: absolute;
   top: 100%;
-  right: 1.5rem;
+  right: 2rem;
   width: 100%;
   max-width: 320px;
   background: #000;
   transform: translateY(-10px);
   opacity: 0;
   pointer-events: none;
-  transition: .3s;
+  transition: 0.3s;
   z-index: 900;
 }
 
-.nav-dropdown.open {
+#nav-menu.open {
   transform: translateY(0);
   opacity: 1;
   pointer-events: auto;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .nav-centered { display: none; }
-  .nav-dots { display: block; }
+/* ---------- MOSTRAR / OCULTAR ---------- */
+@media (min-width: 769px) {
+  #nav-toggle,
+  #nav-menu { display: none; }
 }
 
-@media (min-width: 769px) {
-  .nav-dots,
-  .nav-dropdown { display: none; }
-}
-#nav-toggle {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
+@media (max-width: 768px) {
+  .nav-centered { display: none; }
+  #nav-toggle { display: block; }
 }
   </style>
 </head>
