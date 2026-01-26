@@ -19,7 +19,7 @@
     }
     *{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',Roboto,sans-serif;letter-spacing:.2px}
     body{background:linear-gradient(135deg,#e24b57 0%,#1d3557 100%);color:var(--azul);line-height:1.6}
-    header{background:var(--negro);color:var(--blanco);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:100;flex-wrap:wrap;gap:1rem}
+    header{background:var(--negro);color:var(--blanco);padding:0.5rem 1rem;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:100;flex-wrap:nowrap;gap:0.5rem}
     header img{height:50px;padding:8px;background:rgba(255,255,255,.9);border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,.15);transition:transform .3s}
     header img:hover{transform:scale(1.05)}
     nav a{color:var(--blanco);margin:0 1rem;text-decoration:none;font-weight:600;transition:color .3s}
@@ -86,8 +86,8 @@ header {position:relative}
 #nav-menu a:hover,#nav-menu a:active {background-color:var(--rojo);color:#fff}
 
 /* ---------- RESPONSIVE ---------- */
-@media (min-width:769px) {#nav-toggle {display:none} #nav-menu {display:none}}
-@media (max-width:768px) {.nav-centered {display:none}}
+@media (min-width:769px) {#nav-toggle {display:none} #nav-menu {display:none} nav {display:flex !important}}
+@media (max-width:768px) {.nav-centered {display:none} nav {display:none}}
   </style>
 </head>
 

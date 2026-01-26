@@ -33,20 +33,22 @@
     header {
       background: var(--negro);
       color: var(--blanco);
-      padding: 1rem 2rem;
+      padding: 0.5rem 1rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: relative;
       z-index: 100;
+      flex-wrap: nowrap;
+      gap: 0.5rem;
     }
 
     header img {
-      height: 50px;
-      padding: 8px;
+      height: 40px;
+      padding: 4px;
       background: rgba(255, 255, 255, 0.9);
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
       transition: transform 0.3s ease;
     }
 
@@ -56,10 +58,12 @@
 
     nav a {
       color: var(--blanco);
-      margin: 0 1rem;
+      margin: 0 0.5rem;
       text-decoration: none;
       font-weight: 600;
       transition: color 0.3s ease;
+      font-size: 0.8rem;
+      white-space: nowrap;
     }
 
     nav a:hover {
@@ -195,25 +199,26 @@
 }
 /* ---------- AJUSTE PARA 7 ENLACES EN NAV ---------- */
 .nav-centered {
-  gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
+  gap: 0.3rem;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  flex: 1;
 }
 
 .nav-centered a {
-  font-size: 0.85rem;
-  padding: 0.4rem 0.6rem;
+  font-size: 0.75rem;
+  padding: 0.3rem 0.4rem;
   white-space: nowrap;
 }
 
 .nav-dots {
   display: none;
   flex-direction: column;
-  gap: 5px;
+  gap: 4px;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0.5rem;
+  padding: 0.3rem;
   z-index: 201;
   margin-left: auto;
 }
