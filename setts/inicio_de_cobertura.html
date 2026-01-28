@@ -31,41 +31,6 @@
       line-height: 1.6;
     }
 
-    header {
-      background: var(--negro);
-      color: var(--blanco);
-      padding: 2rem 4rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    header img {
-      height: 50px;
-      padding: 8px;
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      transition: transform 0.3s ease;
-    }
-
-    header img:hover {
-      transform: scale(1.05);
-    }
-
-    nav a {
-      color: var(--blanco);
-      margin: 0 1rem;
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s ease;
-    }
-
-    nav a:hover {
-      color: var(--rojo);
-    }
-
     .hero {
       padding: 4rem 1rem;
       text-align: center;
@@ -114,6 +79,11 @@
       font-weight: 600;
       text-decoration: none;
       transition: background 0.3s, transform 0.2s;
+      z-index: 1000;
+      position: relative;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      outline: none;
+      visibility: visible;
     }
 
     .btn:hover {
@@ -222,104 +192,91 @@
   background: #ff0000;
 }
 
-/* Ocultar botón en desktop */
-.nav-dots {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  .nav-centered { display: none; }
-  .nav-dots { display: block; }
-  .nav-dropdown { display: block; }
-}
-
-@media (min-width: 769px) {
-  .nav-centered { display: flex; }
-  .nav-dots,
-  .nav-dropdown { display: none; }
-}
-header {
-  position: relative;
-}
-@media (max-width: 768px) {
-  header nav {
-    display: none !important;
-  }
-}
-@media (max-width: 768px) {
-  #desktop-nav { display: none !important; }
-  #nav-toggle { display: block !important; }
-  #nav-menu[data-visible="true"] { opacity: 1 !important; pointer-events: auto !important; }
-}
-
-/* ========== HEADER POSICIONADO ========== */
+/* ========== HEADER REFACTORIZADO ========== */
 header {
   position: relative;
   width: 100%;
   background: var(--negro);
   color: #fff;
-  padding: 1.5rem 2rem;
+  padding: 1rem 2rem;
 }
 
 .header-top {
   display: flex;
+  justify-content: space-between;
   align-items: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
 }
 
-.logo img {
+.header-top .logo img {
   height: 50px;
+  padding: 8px;
+  background: rgba(255,255,255,.9);
+  border-radius: 10px;
+  transition: transform .3s;
+}
+
+.header-top .logo img:hover {
+  transform: scale(1.05);
 }
 
 .nav-centered {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 1.2rem;
-  margin-top: 0.5rem;
+  gap: 1rem;
+  width: 100%;
 }
 
 .nav-centered a {
   color: #fff;
   text-decoration: none;
   font-weight: 600;
+  transition: color .3s, padding .3s;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+.nav-centered a:hover {
+  color: var(--rojo);
+  background: rgba(230, 57, 70, 0.1);
 }
 
 /* ========== 3 PUNTITOS BLANCOS ========== */
 #nav-toggle {
   position: absolute;
   top: 50%;
-  right: 2rem;
+  right: 1.5rem;
   transform: translateY(-50%);
-  background: none;
+  background: rgba(0,0,0,0.4);
   border: none;
   cursor: pointer;
-  z-index: 200;
-  padding: 0.5rem;
-  width: 32px;
-  height: 32px;
-  display: flex;
+  z-index: 9999;
+  padding: 10px;
+  width: 44px;
+  height: 44px;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 5px;
-  transition: all 0.3s ease;
-  border-radius: 6px;
-  opacity: 0;
-  pointer-events: none;
+  gap: 5px;           /* 🔹 menos separación */
+  border-radius: 8px;
+}
+
+/* líneas hamburguesa */
+#nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;           /* 🔹 más finas */
+  background-color: #ffffff;
+  border-radius: 2px;
 }
 
 #nav-toggle:hover {
   background: rgba(230, 57, 70, 0.2);
   transform: translateY(-50%) scale(1.1);
-}
-
-#nav-toggle span {
-  display: block;
-  width: 24px;
-  height: 3px;
-  background: #fff;
-  border-radius: 2px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 #nav-toggle.open span:nth-child(1) {
@@ -337,10 +294,13 @@ header {
 
 /* ========== DESPLEGABLE MÓVIL ========== */
 #nav-menu {
+  display: none;
   position: absolute;
   top: 100%;
   right: 0;
-  width: 220px;
+  left: auto;
+  width: auto;
+  max-width: 280px;
   background: #000;
   list-style: none;
   padding: 0;
@@ -350,6 +310,8 @@ header {
   pointer-events: none;
   transition: 0.3s ease;
   z-index: 900;
+  border-top: 2px solid var(--rojo);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
 #nav-menu.open {
@@ -358,25 +320,58 @@ header {
   pointer-events: auto;
 }
 
+#nav-menu li {
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+#nav-menu li:last-child {
+  border-bottom: none;
+}
+
 #nav-menu a {
   display: block;
-  padding: 1rem;
+  padding: 1rem 1.5rem;
   color: #fff;
   font-weight: 600;
   text-decoration: none;
-  border-bottom: 1px solid #222;
+  transition: background .3s, padding-left .3s;
 }
 
 #nav-menu a:hover {
-  background: #ff0000;
+  background: var(--rojo);
+  padding-left: 2rem;
 }
 
-/* ========== MOSTRAR/OCULTAR EN MÓVIL ========== */
+/* ========== RESPONSIVE ========== */
 @media (max-width: 768px) {
-  .nav-centered { display: none !important; }
-  #nav-toggle { 
-    opacity: 1 !important;
-    pointer-events: auto !important;
+  #nav-toggle {
+    display: flex;
+  }
+  
+  #nav-menu {
+    display: block;
+  }
+  
+  .nav-centered {
+    display: none;
+  }
+  
+  .header-top {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 1rem;
+  }
+  
+  .header-top .logo img {
+    height: 40px;
+  }
+  
+  #nav-menu {
+    max-width: 100%;
   }
 }
 </style>
@@ -459,24 +454,14 @@ const menu = document.getElementById('nav-menu');
 const links = menu.querySelectorAll('a');
 
 toggle?.addEventListener('click', () => {
-  toggle.classList.toggle('open');
   menu.classList.toggle('open');
 });
 
 // Cerrar menú al hacer clic en un enlace
 links.forEach(link => {
   link.addEventListener('click', () => {
-    toggle.classList.remove('open');
     menu.classList.remove('open');
   });
-});
-
-// Cerrar menú al hacer clic fuera
-document.addEventListener('click', e => {
-  if (!e.target.closest('#nav-toggle') && !e.target.closest('#nav-menu')) {
-    toggle.classList.remove('open');
-    menu.classList.remove('open');
-  }
 });</script>
 </body>
 </html>

@@ -561,6 +561,126 @@ body.scroll-from-top {
     font-size: 1.1rem;
   }
 }
+.nav-dots {
+  display: none;            /* oculto en desktop */
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 200;
+}
+.nav-dots span {
+  display: block;
+  width: 5px;
+  height: 5px;
+  margin: 3px 0;
+  background: var(--blanco);
+  border-radius: 50%;
+  transition: 0.3s;
+}
+.nav-dots:hover span { background: var(--rojo); }
+
+
+/* ========= MENÚ DESPLEGABLE ========= */
+.nav-dropdown {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+
+  background: #000000;          /* BLANCO */
+  overflow: hidden;
+
+  transform: translateY(-20px);
+  opacity: 0;
+  pointer-events: none;
+
+  transition:
+    transform 0.35s ease,
+    opacity 0.25s ease;
+
+  z-index: 150;
+}
+
+.nav-dropdown.open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Ítems */
+.nav-dropdown li {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.nav-dropdown a {
+  display: block;
+  padding: 1rem;
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* Hover */
+.nav-dropdown a:hover {
+  background: #ff0000;
+}
+
+/* Ocultar botón en desktop */
+.nav-dots {
+  display: none;
+}
+/* ===== SUBMENÚ ===== */
+.submenu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: #111;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+}
+
+.submenu.open {
+  max-height: 300px;
+  opacity: 1;
+}
+
+.submenu a {
+  display: block;
+  padding: 0.75rem 1.5rem;
+  color: var(--blanco);
+  text-decoration: none;
+}
+
+/* ===== BOTÓN SUBMENÚ ===== */
+.submenu-toggle {
+  all: unset;
+  width: 100%;
+  padding: 1rem;
+  cursor: pointer;
+  color: var(--blanco);
+  font-weight: 600;
+}
+
+/* ===== MEDIA QUERIES ===== */
+@media (max-width: 768px) {
+  .nav-centered { display: none; }
+  .nav-dots { display: block; }
+  .nav-dropdown { display: block; }
+}
+
+@media (min-width: 769px) {
+  .nav-centered { display: flex; }
+  .nav-dots,
+  .nav-dropdown { display: none; }
+}
 @media (max-width: 768px) {
   #nav-toggle {
     position: absolute;
