@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejemplo Integración Chatbot - Connect Chile</title>
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <!-- Chatbot CSS -->
+  <link rel="stylesheet" href="chatbot-widget.css">
+  
+  <style>
+    /* Estilos de ejemplo */
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #1d3557 0%, #e63946 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .demo-container {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      max-width: 600px;
+      text-align: center;
+    }
+    
+    .demo-container h1 {
+      color: #1d3557;
+      margin-bottom: 20px;
+    }
+    
+    .demo-container p {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+    
+    .demo-steps {
+      text-align: left;
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    
+    .demo-steps h3 {
+      color: #e63946;
+      margin-top: 0;
+    }
+    
+    .demo-steps ol {
+      padding-left: 20px;
+    }
+    
+    .demo-steps li {
+      margin-bottom: 10px;
+      color: #555;
+    }
+    
+    .code-block {
+      background: #1d3557;
+      color: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      font-family: monospace;
+      font-size: 14px;
+      text-align: left;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="demo-container">
+    <h1>🤖 Chatbot WhatsApp + IA</h1>
+    <p>
+      Este es un ejemplo de cómo se ve el chatbot integrado en tu sitio web.
+      <br><br>
+      <strong>Haz clic en el botón verde de WhatsApp</strong> en la esquina inferior derecha para probarlo.
+    </p>
+    
+    <div class="demo-steps">
+      <h3>📋 Pasos para integrar:</h3>
+      <ol>
+        <li>Copia los archivos <code>chatbot-widget.css</code>, <code>chatbot-widget.js</code> y <code>api.php</code> a tu servidor</li>
+        <li>Incluye el CSS en el <code>&lt;head&gt;</code> de tus páginas</li>
+        <li>Incluye el JS antes del cierre de <code>&lt;/body&gt;</code></li>
+        <li>Configura tu número de WhatsApp en el archivo JS</li>
+        <li>¡Listo! El chatbot aparecerá automáticamente</li>
+      </ol>
+    </div>
+    
+    <div class="code-block">
+&lt;!-- En el &lt;head&gt; --&gt;
+&lt;link rel="stylesheet" href="chatbot-widget.css"&gt;
+
+&lt;!-- Antes de &lt;/body&gt; --&gt;
+&lt;script src="chatbot-widget.js"&gt;&lt;/script&gt;
+    </div>
+  </div>
+
+  <!-- Chatbot JS -->
+  <script src="chatbot-widget.js"></script>
+  
+</body>
+</html>
